@@ -1,5 +1,5 @@
 {
-  "name": "library-boilerplate",
+  "name": "uploader",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
@@ -11,18 +11,25 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/esbenp/library-boilerplate.git"
+    "url": "https://github.com/esbenp/uploader.git"
   },
   "author": "",
   "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/esbenp/library-boilerplate/issues"
+    "url": "https://github.com/esbenp/uploader/issues"
   },
-  "homepage": "https://github.com/esbenp/library-boilerplate",
+  "homepage": "https://github.com/esbenp/uploader",
   "devDependencies": {
-    "gulp": "^3.8.11",
+    "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-copy": "0.0.2",
+    "gulp-less": "^3.0.3",
+    "gulp-minify-css": "^1.1.6",
+    "gulp-minify-html": "^1.0.3",
     "gulp-rename": "^1.2.0",
     "gulp-uglify": "^1.1.0",
-    "gulp-umd": "^0.1.3"
+    "gulp-umd": "^0.1.3",
+    "run-sequence": "^1.1.1"
   }
 }
