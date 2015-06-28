@@ -1,5 +1,5 @@
 {
-  "name": "es6-library-boilerplate",
+  "name": "uploader",
   "version": "0.1.0",
   "description": "",
   "main": "index.js",
@@ -24,7 +24,13 @@
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
     "gulp-bump": "^0.3.1",
+    "gulp-copy": "0.0.2",
     "gulp-eslint": "^0.14.0",
+    "gulp-less": "^3.0.3",
+    "gulp-minify-css": "^1.2.0",
+    "gulp-minify-html": "^1.0.3",
+    "gulp-plumber": "^1.0.1",
+    "gulp-rename": "^1.2.2",
     "jasmine-core": "^2.3.4",
     "jspm": "^0.15.7",
     "karma": "^0.12.37",
@@ -41,10 +47,16 @@
   },
   "jspm": {
     "directories": {},
+    "dependencies": {
+      "core-js": "npm:core-js@^0.9.18"
+    },
     "devDependencies": {
       "babel": "npm:babel-core@^5.1.13",
       "babel-runtime": "npm:babel-runtime@^5.1.13",
       "core-js": "npm:core-js@^0.9.4"
     }
+  },
+  "dependencies": {
+    "object.assign": "^3.0.0"
   }
 }

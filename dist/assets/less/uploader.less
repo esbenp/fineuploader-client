@@ -1,0 +1,259 @@
+.clearfix:before,
+.clearfix:after {
+  content:"";
+  display:table;
+}
+.clearfix:after {
+  clear:both;
+}
+.clearfix {
+  zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+.ul-nolist {
+    list-style-type:none;
+    padding:0;
+    margin:0;
+}
+
+.ul-navigation {
+    .clearfix;
+    .ul-nolist;
+
+    li {
+        float:left;
+    }
+}
+
+.uploader-container {
+    display:table;
+    width:100%;
+
+    &.uploader-single {
+        span.qq-upload-status-text, span.qq-upload-size {
+            width:100%;
+        }
+    }
+
+    .qq-upload-drop-area {
+        background:transparent;
+        display:table-cell !important;
+        border:3px dashed #ccc;
+        position:relative;
+        padding:20px;
+        text-align:center;
+        vertical-align:middle;
+    }
+
+    .qq-upload-list {
+        .ul-navigation;
+
+        margin-left:-15px;
+
+        li {
+            //.alert;
+
+            transition:none !important;
+
+            cursor:move;
+            font-size:12px;
+            height:152px;
+            margin-bottom:0;
+            margin-left:15px;
+            margin-top:20px;
+            padding:10px;
+            position:relative;
+            width:122px;
+
+            &.active {
+                border:1px dashed #468847 !important;
+            }
+
+            &.qq-upload-success {
+                //.alert-success;
+
+                span.qq-upload-size {
+                    background:rgb(87, 173, 87);
+                    color:white;
+                    margin-top:0;
+                }
+            }
+
+            &.qq-upload-info {
+                //.alert-info;
+            }
+
+            &.qq-upload-error {
+                //.alert-danger;
+
+                span.qq-upload-size {
+                    background:rgb(219, 99, 99);
+                    color:white;
+                    margin-top:0;
+                }
+            }
+
+            &.uploader-sortable-placeholder {
+                border:3px dashed #ccc;
+            }
+
+            .uploader-thumb {
+                display:block;
+                margin-bottom:5px;
+            }
+
+            .qq-upload-size {
+                margin-top:-25px;
+            }
+
+            span {
+                color:black;
+                font-size:12px;
+                padding:2px 0;
+                width:100px;
+            }
+
+            .select-overlay {
+                background:black;
+                display:none;
+                height:100%;
+                left:0;
+                opacity:0.1;
+                position:absolute;
+                top:0;
+                width:100%;
+            }
+
+            .qq-upload-cancel.qq-hide, .qq-upload-retry.qq-hide ,
+            .qq-upload-delete.qq-hide, .qq-upload-pause.qq-hide {
+                display:none;
+            }
+
+            .progress {
+                margin-bottom:0;
+            }
+        }
+    }
+}
+
+.uploader-actions-area input {
+    z-index:10000;
+}
+
+.uploader-actions-area .uploader-or-label {
+    font-size:12px;
+}
+
+.uploader-actions-area .uploader-drop-label {
+    font-size:16px;
+}
+
+.uploader-actions-area .uploader-or-label, .uploader-actions-area .uploader-drop-label {
+    margin-bottom:5px;
+}
+
+.qq-upload-drop-area.qq-upload-drop-area-active {
+    background-color:#f1f1f1;
+    border:3px dashed orange;
+}
+
+.uploader-actions-area span, .uploader-filled-actions-area span {
+    display:block;
+    position: relative;
+    top: auto;
+    width: auto;
+    margin-top: inherit;
+    font-size: inherit;
+}
+
+.uploader-thumbnail-container {
+    background-position:center center;
+    background-repeat:no-repeat;
+    height:100px;
+    margin-bottom:5px;
+    width:100px;
+    background-size:contain;
+}
+
+.uploader-thumbnail-container.unfilled {
+    border:2px dashed #333;
+}
+
+.uploader-file-actions {
+    bottom:10px;
+    left:10px;
+    right:10px;
+    position:absolute;
+}
+
+.qq-upload-status-text {
+    display:block;
+}
+
+.uploader-container.uploader-single {
+    .qq-upload-drop-area.filled {
+        border:none;
+        padding:0;
+    }
+
+    .uploader-thumbnail-container.unfilled {
+        border:none;
+    }
+
+    .qq-upload-list {
+        bottom:0;
+        left:0;
+        margin-left:0;
+        position:absolute;
+        right:0;
+        top:0;
+
+        li {
+            border:none;
+            display:table;
+            height:100%;
+            margin-left:0;
+            margin-top:0;
+            padding:0;
+            width:100%;
+
+            .qq-progress-bar-container-selector {
+                margin:0 10px;
+            }
+
+            .uploader-thumbnail-container {
+                height: 100%;
+                margin-bottom: 0;
+                position:absolute;
+                width: 100%;
+                z-index:0;
+            }
+
+            &.qq-upload-success .qq-upload-size {
+                display:none;
+            }
+        }
+    }
+}
+
+.uploader-primary-label {
+    display:none;
+}
+
+.uploader-primary .uploader-primary-label {
+    //.label-primary;
+
+    color:white;
+    display:block;
+    font-size:9px;
+    padding:0 4px;
+    position:absolute;
+    right:-10px;
+    top:10px;
+    text-transform:uppercase;
+    z-index:500;
+}
+
+.qq-upload-drop-area span.qq-hide {
+    display:none;
+}

@@ -4,6 +4,8 @@ var appRoot = 'src/';
 
 module.exports = {
   root: appRoot,
-  source: appRoot + '**/*.js',
+  source: appRoot + 'js/**/*.js',
+  styles: appRoot + 'less/**/*.less',
+  html: appRoot + 'html/**/*.html',
   output: 'dist/'
 };
