@@ -5,14 +5,14 @@ requirejs.config({
         'examples': '../examples',
         'uploader': '../dist',
 
-        'fineuploader': 'fine-uploader/_build/fine-uploader.min',
+        'fineuploader': 'fine-uploader/_build/fine-uploader',
         'text': 'requirejs-text/text',
         'durandal':'durandal/js',
         'plugins' : 'durandal/js/plugins',
         'transitions' : 'durandal/js/transitions',
         'knockout': 'knockout.js/knockout',
         'jquery': 'jquery/jquery',
-        'underscore': 'underscore/underscore'
+        'lodash': 'lodash/lodash'
     },
     shim: {
       'fineuploader': {

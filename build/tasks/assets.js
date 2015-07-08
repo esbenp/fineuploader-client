@@ -15,7 +15,7 @@ gulp.task('styles', function(){
 			   		prefix: 2 // ignore src/less/ part of the path
 			   	}));
 
-   return gulp.src(paths.styles)
+   return gulp.src(paths.lessEntry)
 			   .pipe(less())
 			   .pipe(gulp.dest('dist/assets/css'))
 			   .pipe(minifyCss())
@@ -32,7 +32,10 @@ gulp.task('images', function(){
 	var directory = bowerrc.directory;
 
 	// Copy gif images from fine-uploader
-	return gulp.src(directory + '/fine-uploader/_build/*.gif')
+	return gulp.src([
+						directory + '/fine-uploader/_build/**/*.gif',
+						directory + '/fine-uploader/_build/**/*.png'
+					])
 			   .pipe(copy('dist/assets/images', {
 			   		prefix: 3
 			   	}));

@@ -1,7 +1,5 @@
 <div class="uploader-template">
     <div class="qq-uploader-selector qq-uploader uploader-container" data-bind="css: {'uploader-single': limit === 1}">
-        <input type="hidden" class="uploader-form-error">
-        <input type="hidden" class="uploader-server-data">
         <div class="qq-upload-drop-area-selector qq-upload-drop-area">
             <div class="uploader-actions-area">
                 <span class="uploader-drop-label" data-bind="text: template.dropLabel"></span>
@@ -10,30 +8,33 @@
                     <div data-bind="html: template.btnLabel"></div>
                 </div>
             </div>
-            <ul class="qq-upload-list-selector qq-upload-list qq-hide">
+            <ul class="qq-upload-list-selector qq-upload-list">
                 <li>
-                    <div class="uploader-thumbnail-container unfilled"></div>
-                    <div class="qq-progress-bar-container-selector progress progress-small">
-                        <div data-percentage="0%" style="width: 45%;" class="qq-progress-bar-selector progress-bar progress-bar-primary"></div>
+                    <div class="uploader-thumbnail-container unfilled">
+                      <div class="optimus-uploader-progress">
+                        <div class="optimus-uploader-icon optimus-uploader-icon-file">
+
+                        </div>
+                      </div>
                     </div>
                     <div class="uploader-primary-label">Primary</div>
-                    <span class="qq-upload-spinner-selector qq-upload-spinner"></span>
-                    <span class="qq-edit-filename-icon-selector qq-edit-filename-icon"></span>
-                    <span class="qq-upload-file-selector qq-upload-file qq-hide"></span>
-                    <input class="qq-edit-filename-selector qq-edit-filename" tabindex="0" type="text">
                     <span class="qq-upload-size-selector qq-upload-size"></span>
-                    <div class="uploader-file-actions">
-                        <a class="qq-upload-cancel-selector qq-upload-cancel btn btn-block btn-danger btn-xs" href="javascript:;">Cancel</a>
-                        <a class="qq-upload-retry-selector qq-upload-retry btn btn-block btn-danger btn-xs" href="javascript:;">Retry</a>
-                        <a class="qq-upload-delete-selector qq-upload-delete btn btn-block btn-danger btn-xs" href="javascript:;">Delete</a>
-                    </div>
                     <span class="qq-upload-status-text-selector qq-upload-status-text"></span>
+                    <div class="uploader-file-actions">
+                      <div class="display-table width-100">
+                        <div class="display-table-cell qq-upload-cancel-selector">
+                          <a class="qq-upload-cancel btn btn-danger btn-xs btn-block" href="javascript:;">Cancel</a>
+                        </div>
+                        <div class="display-table-cell qq-upload-retry-selector">
+                          <a class="qq-upload-retry btn btn-danger btn-xs btn-block" href="javascript:;">Retry</a>
+                        </div>
+                        <div class="display-table-cell qq-upload-delete-selector">
+                          <a class="qq-upload-delete btn btn-block btn-danger btn-xs btn-block" href="javascript:;">Delete</a>
+                        </div>
+                      </div>
+                    </div>
                 </li>
             </ul>
         </div>
-        <span class="qq-drop-processing-selector qq-drop-processing qq-hide">
-            <span>Processing dropped files...</span>
-            <span class="qq-drop-processing-spinner-selector qq-drop-processing-spinner"></span>
-        </span>
     </div>
 </div>

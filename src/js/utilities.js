@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 // http://stackoverflow.com/a/384380/602488
 export function isElement(obj) {
   try {
@@ -14,51 +16,17 @@ export function isElement(obj) {
   }
 }
 
+export function isFunction(input) {
+  return typeof input === 'function';
+}
+
 export function isString(input) {
   return typeof input === 'string';
 }
 
-/**
-Object assign by https://github.com/sindresorhus/object-assign/blob/master/index.js
-*/
-var propIsEnumerable = Object.prototype.propertyIsEnumerable;
-
-function ToObject(val) {
-	if (val == null) {
-		throw new TypeError('Object.assign cannot be called with null or undefined');
-	}
-
-	return Object(val);
+export function isUndefined(input) {
+  return typeof input === 'undefined';
 }
-
-function ownEnumerableKeys(obj) {
-	var keys = Object.getOwnPropertyNames(obj);
-
-	if (Object.getOwnPropertySymbols) {
-		keys = keys.concat(Object.getOwnPropertySymbols(obj));
-	}
-
-	return keys.filter(function (key) {
-		return propIsEnumerable.call(obj, key);
-	});
-}
-
-export function assign(target, source) {
-	var from;
-	var keys;
-	var to = ToObject(target);
-
-	for (var s = 1; s < arguments.length; s++) {
-		from = arguments[s];
-		keys = ownEnumerableKeys(Object(from));
-
-		for (var i = 0; i < keys.length; i++) {
-			to[keys[i]] = from[keys[i]];
-		}
-	}
-
-	return to;
-};
 
 export function guid() {
   function s4() {
@@ -68,4 +36,32 @@ export function guid() {
   }
   return s4() + s4() + '-' + s4() + '-' + s4() + '-' +
     s4() + '-' + s4() + s4() + s4();
+}
+
+export function stringOrFunction() {
+  var args = Array.prototype.slice.call(arguments);
+  var subject = args.shift();
+
+  if (isString(subject)) {
+    return subject;
+  } else if (isFunction(subject)){
+    return subject.apply(this, args);
+  } else {
+    throw Error("Invalid argument.");
+  }
+}
+
+export function trimFilename(filename, maxLength) {
+  var ext = filename.substr(filename.lastIndexOf('.')+1);
+  var basename = filename.substr(0, filename.lastIndexOf('.')-1);
+
+  if (isUndefined(maxLength)) {
+    maxLength = 20;
+  }
+
+  if (basename.length > maxLength) {
+    basename = basename.substr(0, maxLength) + '..';
+  }
+
+  return basename + '.' + ext;
 }

@@ -1,69 +1,71 @@
-define(["exports"], function (exports) {
-	"use strict";
+define(["exports", "lodash"], function (exports, _lodash) {
+  "use strict";
 
-	exports.__esModule = true;
-	exports.isElement = isElement;
-	exports.isString = isString;
-	exports.assign = assign;
-	exports.guid = guid;
+  exports.__esModule = true;
+  exports.isElement = isElement;
+  exports.isFunction = isFunction;
+  exports.isString = isString;
+  exports.isUndefined = isUndefined;
+  exports.guid = guid;
+  exports.stringOrFunction = stringOrFunction;
+  exports.trimFilename = trimFilename;
 
-	function isElement(obj) {
-		try {
-			return obj instanceof HTMLElement;
-		} catch (e) {
-			return typeof obj === "object" && obj.nodeType === 1 && typeof obj.style === "object" && typeof obj.ownerDocument === "object";
-		}
-	}
+  function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-	function isString(input) {
-		return typeof input === "string";
-	}
+  var _2 = _interopRequireDefault(_lodash);
 
-	var propIsEnumerable = Object.prototype.propertyIsEnumerable;
+  function isElement(obj) {
+    try {
+      return obj instanceof HTMLElement;
+    } catch (e) {
+      return typeof obj === "object" && obj.nodeType === 1 && typeof obj.style === "object" && typeof obj.ownerDocument === "object";
+    }
+  }
 
-	function ToObject(val) {
-		if (val == null) {
-			throw new TypeError("Object.assign cannot be called with null or undefined");
-		}
+  function isFunction(input) {
+    return typeof input === "function";
+  }
 
-		return Object(val);
-	}
+  function isString(input) {
+    return typeof input === "string";
+  }
 
-	function ownEnumerableKeys(obj) {
-		var keys = Object.getOwnPropertyNames(obj);
+  function isUndefined(input) {
+    return typeof input === "undefined";
+  }
 
-		if (Object.getOwnPropertySymbols) {
-			keys = keys.concat(Object.getOwnPropertySymbols(obj));
-		}
+  function guid() {
+    function s4() {
+      return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
+    }
+    return s4() + s4() + "-" + s4() + "-" + s4() + "-" + s4() + "-" + s4() + s4() + s4();
+  }
 
-		return keys.filter(function (key) {
-			return propIsEnumerable.call(obj, key);
-		});
-	}
+  function stringOrFunction() {
+    var args = Array.prototype.slice.call(arguments);
+    var subject = args.shift();
 
-	function assign(target, source) {
-		var from;
-		var keys;
-		var to = ToObject(target);
+    if (isString(subject)) {
+      return subject;
+    } else if (isFunction(subject)) {
+      return subject.apply(this, args);
+    } else {
+      throw Error("Invalid argument.");
+    }
+  }
 
-		for (var s = 1; s < arguments.length; s++) {
-			from = arguments[s];
-			keys = ownEnumerableKeys(Object(from));
+  function trimFilename(filename, maxLength) {
+    var ext = filename.substr(filename.lastIndexOf(".") + 1);
+    var basename = filename.substr(0, filename.lastIndexOf(".") - 1);
 
-			for (var i = 0; i < keys.length; i++) {
-				to[keys[i]] = from[keys[i]];
-			}
-		}
+    if (isUndefined(maxLength)) {
+      maxLength = 20;
+    }
 
-		return to;
-	}
+    if (basename.length > maxLength) {
+      basename = basename.substr(0, maxLength) + "..";
+    }
 
-	;
-
-	function guid() {
-		function s4() {
-			return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
-		}
-		return s4() + s4() + "-" + s4() + "-" + s4() + "-" + s4() + "-" + s4() + s4() + s4();
-	}
+    return basename + "." + ext;
+  }
 });

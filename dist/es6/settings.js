@@ -1,48 +1,66 @@
 export var defaults = {
-    callbacks: {},
-    container: null,
-    fineUploaderOverrides: {},
-    initiateOnCreation: false,
-    limit: 0,
-    paths: {
-        base_directory: null,
-        sub_directory: null
-    },
-    plugins: [],
-    templatePathOrMarkup: null,
-    template: {
-      btnClass: 'btn-large',
-      btnLabel: '<i class="glyphicon glyphicon-file"></i> Select File(s) on Drive',
-      dropLabel: 'Drop Files Here to Upload'
-    },
-    url_prefix: false
+  allowedExtensions: [],
+  callbacks: {},
+  container: null,
+  fineUploaderOverrides: {},
+  initiateOnCreation: false,
+  limit: 0,
+  maxFilenameDisplayLength: 20,
+  messages: {
+    completedUpload: "Completed."
+  },
+  paths: {
+    base_directory: null,
+    sub_directory: null
+  },
+  plugins: [],
+  sizeLimit: null,
+  templatePathOrMarkup: null,
+  template: {
+    btnClass: 'btn-large',
+    btnLabel: '<i class="glyphicon glyphicon-file"></i> Select File(s) on Drive',
+    dropLabel: 'Drop Files Here to Upload'
+  },
+  thumbnails: {
+    height: 100,
+    width: 100
+  },
+  url_prefix: false
 };
 
 export var fineuploader_defaults = {
-    callbacks: {},
-    chunking: {
-        enabled: true
-    },
-    //debug: true,
-    deleteFile: {
-        enabled: true,
-        endpoint: "/uploader/upload"
-    },
-    multiple: true,
-    request: {
-        endpoint: '/uploader/delete',
-        params: {},
-        paramsInBody: true
-    },
-    resume: {
-        enabled: true
-    },
-    retry: {
-        showAutoRetryNote: false,
-        enableAuto: true /// :NDRE YOO
-    },
-    validation: {
-        allowedExtensions: [],
-        itemLimit: 0
+  callbacks: {},
+  chunking: {
+    enabled: true
+  },
+  debug: true,
+  deleteFile: {
+    enabled: true,
+    endpoint: "/uploader/delete"
+  },
+  multiple: true,
+  request: {
+    endpoint: '/uploader/upload',
+    params: {},
+    paramsInBody: true
+  },
+  resume: {
+    enabled: true
+  },
+  retry: {
+    showAutoRetryNote: false,
+    enableAuto: true /// :NDRE YOO
+  },
+  thumbnails: {
+    placeholders: {
+      notAvailablePath: '../dist/assets/images/placeholders/not_available-generic.png',
+      waitingPath: '../dist/assets/images/placeholders/waiting-generic.png',
+      waitUntilResponse: false
     }
+  },
+  validation: {
+    allowedExtensions: [],
+    itemLimit: 0,
+    sizeLimit: 0
+  }
 };
