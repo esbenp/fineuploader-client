@@ -15,7 +15,9 @@
     "tests"
   ],
   "dependencies": {
-    "fine-uploader": "~5.2.2",
-    "fontawesome": "~4.3.0"
+    "fine-uploader": "~5.2.2"
+  },
+  "devDependencies": {
+    "requirejs": "~2.1.16"
   }
 }

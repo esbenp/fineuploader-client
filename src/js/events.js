@@ -101,8 +101,7 @@ export function onDeleteComplete(uploader, id, xhr, isError)
   container.find(".qq-upload-drop-area").removeClass("filled");
 }
 
-export function onError(id, name, errorReason, xhr)
-{
+export function onError(id, name, errorReason, xhr) {
 
 }
 
