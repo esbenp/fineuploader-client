@@ -1,11 +1,10 @@
 import {isFunction} from '../utilities';
-import {toggleContainerErrorMode} from '../dom/utilities';
+import {toggleFileContainerErrorMode} from '../dom/utilities';
 
 export function onError(uploader, id, name, errorReason, xhr) {
-  var container = $(uploader.settings.container).find(".qq-uploader-selector");
-  var file_container = container.find("li[qq-file-id='" + id + "']");
+  var file_container = $(uploader.fineuploader.getItemByFileId(id));
 
-  toggleContainerErrorMode(file_container);
+  toggleFileContainerErrorMode(file_container);
 
   var customHandler = uploader.settings.errorHandler;
   if (isFunction(customHandler)) {

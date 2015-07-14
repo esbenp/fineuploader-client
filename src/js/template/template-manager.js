@@ -18,11 +18,7 @@ export class TemplateManager {
       return err('The loaded markup was either empty or non valid.', markup);
     }
 
-    if (container.children.length > 1) {
-      return err('The loaded markup should only have 1 root node.');
-    }
-
-    return container.children[0];
+    return container;
   }
 
   render(node, viewmodel = {}) {

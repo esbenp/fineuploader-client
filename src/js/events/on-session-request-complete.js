@@ -1,5 +1,9 @@
 import $ from 'jquery';
-import {fillContainer} from '../dom/utilities';
+import {
+  fillContainer,
+  getContainer,
+  toggleFileContainerErrorMode
+} from '../dom/utilities';
 import {
   isFunction,
   isUndefined,
@@ -11,13 +15,13 @@ import {onUpload} from './on-upload';
 
 export function onSessionRequestComplete(uploader, response, success, xhr)
 {
-  var container = $(uploader.settings.container).find(".qq-uploader-selector");
+  var container = getContainer(uploader.settings.container);
 
   for (var i in response) {
       var obj = response[i];
 
       if (!isUndefined(obj.error_code)) {
-        var file_container = container.find("li[qq-file-id='" + i + "']");
+        var file_container = $(uploader.fineuploader.getItemByFileId(i));
 
         var errorMessage = stringOrFunction(
           uploader.settings.messages.errors[obj.error_code],
@@ -27,6 +31,7 @@ export function onSessionRequestComplete(uploader, response, success, xhr)
         fillContainer(container, i, errorMessage);
 
         onError.call(uploader.fineuploader, uploader, i, obj.name, errorMessage, xhr);
+        toggleFileContainerErrorMode(file_container);
 
         var customSessionErrorHandler = uploader.settings.sessionErrorHandler;
         if (isFunction(customSessionErrorHandler)) {

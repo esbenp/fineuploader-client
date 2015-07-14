@@ -1,0 +1,28 @@
+/**
+ * THUMBNAIL STYLES
+ */
+
+// The thumbnail container. The thumbnail will be inserted as a background image
+.ou__files__thumbnail {
+  background-position:center center;
+  background-repeat:no-repeat;
+  height:100px;
+  margin-bottom:5px;
+  width:100px;
+  background-size:contain;
+}
+
+// When nothing has been pasted to the uploader
+.ou__files__thumbnail--unfilled {
+  border:2px dashed @upload_thumbnail_placeholder_border;
+}
+
+// When something was successfully uploaded
+.ou__files__thumbnail--success {
+  border:2px dashed @upload_thumbnail_placeholder_border_success;
+}
+
+// When an error occurred on upload
+.ou__files__thumbnail--error {
+  border:2px dashed @upload_thumbnail_placeholder_border_error;
+}

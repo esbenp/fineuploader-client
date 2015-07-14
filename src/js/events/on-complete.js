@@ -5,15 +5,14 @@ import {
 } from '../utilities';
 import {
   fillContainer,
-  toggleContainerErrorMode,
-  toggleContainerSuccessfulFileMode,
-  toggleContainerSuccessfulImageMode
+  toggleFileContainerErrorMode,
+  toggleFileContainerSuccessfulFileMode,
+  toggleFileContainerSuccessfulImageMode
 } from '../dom/utilities';
 
 export function onComplete(uploader, id, name, responseJSON, xhr)
 {
-  var container = $(uploader.settings.container).find(".qq-uploader-selector");
-  var file_container = container.find("li[qq-file-id='" + id + "']");
+  var file_container = $(uploader.fineuploader.getItemByFileId(id));
 
   switch(xhr.status){
     case 200:
@@ -28,27 +27,28 @@ export function onComplete(uploader, id, name, responseJSON, xhr)
       }, id);
 
       var file_type = responseJSON.file_type;
+      var successMessage;
 
       if (file_type === 'image') {
-        var successMessage = stringOrFunction(
+        successMessage = stringOrFunction(
           uploader.settings.messages.completedImage,
           uploader.fineuploader,
           id
         );
 
-        toggleContainerSuccessfulImageMode(
+        toggleFileContainerSuccessfulImageMode(
           file_container,
           responseJSON.thumbnailUrl,
           successMessage
         );
       } else {
-        var successMessage = trimFilename(stringOrFunction(
+        successMessage = trimFilename(stringOrFunction(
           uploader.settings.messages.completedFile,
           uploader.fineuploader,
           id
         ), uploader.settings.maxFilenameDisplayLength);
 
-        toggleContainerSuccessfulFileMode(
+        toggleFileContainerSuccessfulFileMode(
           file_container,
           successMessage
         );

@@ -48,7 +48,7 @@ define([
           }
       }, KnockoutEngine, RequireJsTextLoader);
 
-      this.single("products/55a36a3b6adee.jpg");
+      this.single("products/55a4cb2715e6d.jpg");
 
       this.singleInstance.initialize();
 
@@ -80,6 +80,8 @@ define([
             PrimaryDrag
           ]
       }, KnockoutEngine, RequireJsTextLoader);
+
+      this.multiple.push("products/55a4cb2715e6d.jpg");
 
       this.multipleInstance.initialize();
     }

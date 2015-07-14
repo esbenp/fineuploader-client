@@ -1,61 +1,74 @@
-import {THUMB_CONTAINER_SELECTOR} from '../dom/constants';
-import {ICON_CONTAINER_SELECTOR} from '../dom/constants';
-import {SIZE_LABEL_SELECTOR} from '../dom/constants';
-import {SINGLE_FILLED_CLASS} from '../dom/constants';
+import {
+  CONTAINER_SELECTOR,
+  FILE_ICON_FILE_CLASS,
+  FILE_ICON_ERROR_CLASS,
+  FILE_ICON_SELECTOR,
+  FILE_STATUS_TEXT_RIBBON_CLASS,
+  FILE_STATUS_TEXT_SELECTOR,
+  SINGLE_FILLED_CLASS,
+  SIZE_LABEL_SELECTOR,
+  THUMBNAIL_SELECTOR,
+  THUMBNAIL_ERROR_CLASS,
+  THUMBNAIL_SUCCESS_CLASS,
+  THUMBNAIL_UNFILLED_CLASS
+} from '../dom/constants';
 
+// Get uploader container
+export function getContainer(container)
+{
+  return $(container).find(CONTAINER_SELECTOR);
+}
 
 export function fillContainer(container, id, message)
 {
-  var container = container.find("li[qq-file-id='" + id + "']");
-
   container.addClass(SINGLE_FILLED_CLASS);
 
-  container.find(".qq-upload-status-text-selector")
+  container.find(FILE_STATUS_TEXT_SELECTOR)
     .removeClass('qq-hide')
     .text(message);
 }
 
-export function toggleContainerErrorMode(container)
+export function toggleFileContainerErrorMode(container)
 {
-  var thumb_container = container.find(THUMB_CONTAINER_SELECTOR);
-  var icon = container.find(ICON_CONTAINER_SELECTOR);
+  var thumb_container = container.find(THUMBNAIL_SELECTOR);
+  var icon = container.find(FILE_ICON_SELECTOR);
+
+  container.removeClass('qq-upload-success').addClass('qq-upload-fail');
 
   // Show error icon
-  icon.addClass('optimus-uploader-icon-error').show();
+  icon.addClass(FILE_ICON_ERROR_CLASS).show();
   // Red borders
   thumb_container
-    .addClass("optimus-uploader-thumbnail-error");
+    .addClass(THUMBNAIL_ERROR_CLASS);
 }
 
-export function toggleContainerSuccessfulFileMode(container, message)
+export function toggleFileContainerSuccessfulFileMode(container, message)
 {
-  var thumb_container = container.find(THUMB_CONTAINER_SELECTOR);
-  var icon = thumb_container.find(ICON_CONTAINER_SELECTOR);
+  var thumb_container = container.find(THUMBNAIL_SELECTOR);
+  var icon = thumb_container.find(FILE_ICON_SELECTOR);
 
-  thumb_container.find(".qq-upload-status-text-selector").text(message);
+  container.find(FILE_STATUS_TEXT_SELECTOR).text(message);
 
   icon
-    .addClass('optimus-uploader-icon-file')
+    .addClass(FILE_ICON_FILE_CLASS)
     .show();
 
   thumb_container
-    .addClass("optimus-uploader-thumbnail-success");
+    .addClass(THUMBNAIL_SUCCESS_CLASS);
 }
 
-export function toggleContainerSuccessfulImageMode(container, thumbnail, message)
+export function toggleFileContainerSuccessfulImageMode(container, thumbnail, message)
 {
-  var thumb_container = container.find(THUMB_CONTAINER_SELECTOR);
-  var icon = container.find(ICON_CONTAINER_SELECTOR);
+  var thumb_container = container.find(THUMBNAIL_SELECTOR);
+  var icon = container.find(FILE_ICON_SELECTOR);
 
-  icon.removeClass('optimus-uploader-icon-error').hide();
-  thumb_container.removeClass("optimus-uploader-thumbnail-error unfilled");
+  icon.removeClass(FILE_ICON_ERROR_CLASS).hide();
+  thumb_container.removeClass(THUMBNAIL_ERROR_CLASS + ' ' + THUMBNAIL_UNFILLED_CLASS);
   thumb_container.css('background', 'url(' + thumbnail + ')');
-
-  thumb_container.find(".qq-upload-drop-area").addClass("filled");
 
   container.find(SIZE_LABEL_SELECTOR).hide();
 
-  container.find(".qq-upload-status-text-selector")
-    .addClass('optimus-uploader-status-text-ribbon')
+  container.find(FILE_STATUS_TEXT_SELECTOR)
+    .addClass(FILE_STATUS_TEXT_RIBBON_CLASS)
     .text(message);
 }

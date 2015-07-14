@@ -1,4 +1,15 @@
-.optimus-uploader-icon {
+.qq-upload-file,
+.qq-upload-spinner,
+.ou-size-label,
+.qq-upload-cancel,
+.qq-upload-retry,
+.qq-upload-failed-text,
+.qq-upload-delete,
+.qq-upload-pause,
+.qq-upload-continue {
+  margin-right: 0;
+}
+.ou__files__icon {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIg0KCSB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCINCgkgdmlld0JveD0iMCAwIDMyIDMyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAzMiAzMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8dGl0bGU+PC90aXRsZT4NCjxkZXNjPjwvZGVzYz4NCjxnIGlkPSJQYWdlLTEiPg0KCTxnIGlkPSJpY29uLTEzMC1jbG91ZC11cGxvYWQiPg0KCQk8cGF0aCBpZD0iY2xvdWQtdXBsb2FkIiBmaWxsPSIjRDNDMkEzIiBkPSJNMTYsMTZsLTMuMjUsMy4yNUwxMiwxOC41bDQuNS00LjVsNC41LDQuNWwtMC43NSwwLjc1TDE3LDE2djExaC0xVjE2TDE2LDE2eiBNMTUsMjENCgkJCUg4LjAwM0M1Ljc5OCwyMSw0LDE5LjIwOSw0LDE3YzAtMS44OTYsMS4zMjUtMy40ODgsMy4xMDEtMy44OThsMCwwQzcuMDM1LDEyLjc0NSw3LDEyLjM3Niw3LDEyYzAtMy4zMTMsMi42ODctNiw2LTYNCgkJCWMyLjYxNSwwLDQuODQsMS42NzMsNS42NjIsNC4wMDhDMTkuNDM2LDkuMzc4LDIwLjQyNCw5LDIxLjUsOWMyLjM1OCwwLDQuMjkzLDEuODE0LDQuNDg0LDQuMTIzbDAsMA0KCQkJQzI3LjcxNSwxMy41NjMsMjksMTUuMTMyLDI5LDE3YzAsMi4yMDUtMS43OTIsNC00LjAwMyw0SDE4djFoN2MyLjc2MiwwLDUtMi4yNDQsNS01YzAtMi4wOTctMS4yODctMy44OTItMy4xMTctNC42MzVsMCwwDQoJCQlDMjYuMzU5LDkuODcyLDI0LjE0OCw4LDIxLjUsOGMtMC44NjMsMC0xLjY4LDAuMTk5LTIuNDA2LDAuNTUzQzE3Ljg5MSw2LjQzMiwxNS42MTMsNSwxMyw1Yy0zLjg2NiwwLTcsMy4xMzQtNyw3DQoJCQljMCwwLjEzOCwwLjAwNCwwLjI3NSwwLjAxMiwwLjQxMmwwLDBDNC4yNCwxMy4xODIsMywxNC45NDksMywxN2MwLDIuNzYyLDIuMjMyLDUsNSw1aDdWMjFMMTUsMjFMMTUsMjF6Ii8+DQoJPC9nPg0KPC9nPg0KPC9zdmc+DQo=');
   background-size: cover;
   height: 48px;
@@ -6,10 +17,10 @@
   position: relative;
   width: 48px;
 }
-.optimus-uploader-icon-file {
+.ou__files__icon--file {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIg0KCSB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCINCgkgdmlld0JveD0iMCAwIDMyIDMyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAzMiAzMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8dGl0bGU+PC90aXRsZT4NCjxkZXNjPjwvZGVzYz4NCjxnIGlkPSJQYWdlLTEiPg0KCTxnIGlkPSJpY29uLTU1LWRvY3VtZW50LXRleHQiPg0KCQk8ZyBpZD0iZG9jdW1lbnQtdGV4dCI+DQoJCQk8cGF0aCBmaWxsPSIjQTZDRkMzIiBkPSJNMjAsM2gtMC41SDkuMDAzQzcuODk2LDMsNywzLjg5OCw3LDUuMDA3djIyLjk4NUM3LDI5LjEwMiw3Ljg5MSwzMCw4Ljk5OCwzMGgxNS4wMDQNCgkJCQlDMjUuMTA1LDMwLDI2LDI5LjEwMiwyNiwyOC4wMVYxMC41VjEwTDIwLDNMMjAsM3ogTTksMjljLTAuNTQ1LDAtMS0wLjQ0NS0xLTAuOTk2VjQuOTk2QzgsNC40NTUsOC40NDYsNCw4Ljk5Niw0SDE5djQuOTk0DQoJCQkJQzE5LDEwLjExMywxOS44OTUsMTEsMjAuOTk4LDExSDI1djE3LjAwN0MyNSwyOC41NTUsMjQuNTUzLDI5LDI0LDI5SDlMOSwyOXogTTIwLjk5NiwxMEMyMC40NTEsMTAsMjAsOS41NDgsMjAsOC45OTFWNC41DQoJCQkJbDQuNyw1LjVIMjAuOTk2TDIwLjk5NiwxMHogTTE3LDdoLTd2MWg3VjdMMTcsN3ogTTE3LDEwaC03djFoN1YxMEwxNywxMHogTTIzLDEzSDEwdjFoMTNWMTNMMjMsMTN6IE0yMywxNkgxMHYxaDEzVjE2TDIzLDE2eg0KCQkJCSBNMjMsMTlIMTB2MWgxM1YxOUwyMywxOXogTTIzLDIySDEwdjFoMTNWMjJMMjMsMjJ6IE0yMywyNUgxMHYxaDEzVjI1TDIzLDI1eiIvPg0KCQk8L2c+DQoJPC9nPg0KPC9nPg0KPC9zdmc+DQo=');
 }
-.optimus-uploader-icon-error {
+.ou__files__icon--error {
   background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIg0KCSB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCINCgkgdmlld0JveD0iMCAwIDMyIDMyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAzMiAzMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8dGl0bGU+PC90aXRsZT4NCjxkZXNjPjwvZGVzYz4NCjxnIGlkPSJQYWdlLTEiPg0KCTxnIGlkPSJpY29uLTEzMS1jbG91ZC1lcnJvciI+DQoJCTxwYXRoIGlkPSJjbG91ZC1lcnJvciIgZmlsbD0iI0ZDQjlCOSIgZD0iTTEyLjM2NCwyNEg4LjAwM0M1Ljc5OCwyNCw0LDIyLjIwOSw0LDIwYzAtMS44OTYsMS4zMjUtMy40ODgsMy4xMDEtMy44OThsMCwwDQoJCQlDNy4wMzUsMTUuNzQ1LDcsMTUuMzc2LDcsMTVjMC0zLjMxMywyLjY4Ny02LDYtNmMyLjYxNSwwLDQuODQsMS42NzMsNS42NjIsNC4wMDhDMTkuNDM2LDEyLjM3OCwyMC40MjQsMTIsMjEuNSwxMg0KCQkJYzIuMzU4LDAsNC4yOTMsMS44MTQsNC40ODQsNC4xMjNsMCwwQzI3LjcxNSwxNi41NjIsMjksMTguMTMyLDI5LDIwYzAsMi4yMDUtMS43OTIsNC00LjAwMyw0aC00LjM2TDE2LjUsMTdMMTIuMzY0LDI0TDEyLjM2NCwyNA0KCQkJTDEyLjM2NCwyNHogTTIxLjIyNywyNUgyNWMyLjc2MiwwLDUtMi4yNDQsNS01YzAtMi4wOTctMS4yODctMy44OTItMy4xMTctNC42MzVsMCwwQzI2LjM1OSwxMi44NzIsMjQuMTQ4LDExLDIxLjUsMTENCgkJCWMtMC44NjMsMC0xLjY4LDAuMTk5LTIuNDA2LDAuNTUzQzE3Ljg5MSw5LjQzMiwxNS42MTMsOCwxMyw4Yy0zLjg2NiwwLTcsMy4xMzQtNyw3YzAsMC4xMzgsMC4wMDQsMC4yNzUsMC4wMTIsMC40MTJsMCwwDQoJCQlDNC4yNCwxNi4xODIsMywxNy45NDksMywyMGMwLDIuNzYyLDIuMjMyLDUsNSw1aDMuNzczTDEwLDI4aDEzTDIxLjIyNywyNUwyMS4yMjcsMjVMMjEuMjI3LDI1eiBNMTYuNSwxOWw0Ljc1LDhoLTkuNUwxNi41LDE5DQoJCQlMMTYuNSwxOXogTTE2LDIxdjNoMXYtM0gxNkwxNiwyMXogTTE2LDI1djFoMXYtMUgxNkwxNiwyNXoiLz4NCgk8L2c+DQo8L2c+DQo8L3N2Zz4NCg==');
 }
 .clearfix:before,
@@ -48,17 +59,17 @@
 .width-100 {
   width: 100%;
 }
-.uploader-container {
+.qq-hide {
+  display: none;
+}
+.ou__container {
   display: table;
   width: 100%;
-  /*
-    &.uploader-single {
-    span.qq-upload-status-text, span.qq-upload-size {
-    width:100%;
-  }
-  }*/
 }
-.uploader-container .qq-upload-drop-area {
+/**
+ * THE DROP AREA
+ */
+.ou__drop-area {
   background: transparent;
   display: table-cell;
   border: 3px dashed #cccccc;
@@ -67,7 +78,26 @@
   text-align: center;
   vertical-align: middle;
 }
-.uploader-container .qq-upload-list {
+.ou__drop-area.qq-upload-drop-area-active {
+  background-color: #f1f1f1;
+  border: 3px dashed orange;
+}
+.ou__drop-area__actions-label {
+  display: block;
+  position: relative;
+  top: auto;
+  width: auto;
+  margin-top: inherit;
+  margin-bottom: 5px;
+  font-size: inherit;
+}
+.ou__drop-area__actions-label--or {
+  font-size: 12px;
+}
+.ou__drop-area__actions-label--drop {
+  font-size: 16px;
+}
+.ou__files {
   zoom: 1;
   /* For IE 6/7 (trigger hasLayout) */
   list-style-type: none;
@@ -76,10 +106,10 @@
   margin-left: -15px;
   margin-top: 5px;
 }
-.uploader-container .qq-upload-list li {
+.ou__files li {
   float: left;
 }
-.uploader-container .qq-upload-list li {
+.ou__files li {
   transition: none !important;
   border: 1px solid #F0DBB4;
   border-radius: 3px;
@@ -90,100 +120,58 @@
   padding: 10px;
   position: relative;
   width: 122px;
-  /*  &.active {
-        border:1px dashed #468847 !important;
-      }
-  */
-  /*&.qq-upload-success, &.qq-upload-error span.qq-upload-size {
-        color:white;
-        margin-top:0;
-      }
-
-      &&.qq-upload-success span.qq-upload-size {
-        background:green;
-      }
-
-      &&.qq-upload-error span.qq-upload-size {
-        background:red;
-      }*/
-  /*.uploader-thumb {
-        display:block;
-        margin-bottom:5px;
-      }*/
-  /*span {
-      color:black;
-      font-size:12px;
-      padding:2px 0;
-      width:100px;
-    }
-    */
-  /*.select-overlay {
-    background:black;
-    display:none;
-    height:100%;
-    left:0;
-    opacity:0.1;
-    position:absolute;
-    top:0;
-    width:100%;
-    }*/
-  /*.qq-upload-cancel.qq-hide, .qq-upload-retry.qq-hide ,
-    .qq-upload-delete.qq-hide, .qq-upload-pause.qq-hide {
-    display:none;
-    }*/
-  /*.progress {
-    margin-bottom:0;
-    }*/
 }
-.uploader-container .qq-upload-list li.qq-upload-success {
+.ou__files li.qq-upload-success {
   background-color: #f3faf8;
   border-color: #bfd1cf;
 }
-.uploader-container .qq-upload-list li.qq-upload-fail {
+.ou__files li.qq-upload-fail {
   background-color: #fff6f4;
   border-color: #f8cdcd;
 }
-.uploader-container .qq-upload-list li .qq-upload-size,
-.uploader-container .qq-upload-list li .qq-upload-status-text {
+.ou__files__size-label,
+.ou__files__status-label {
   display: block;
   left: 10px;
   position: absolute;
   right: 10px;
   top: 50%;
 }
-.uploader-container .qq-upload-list li .qq-upload-size {
+.ou__files__size-label {
   font-size: 10px;
   margin-top: 15px;
 }
-/*
-.uploader-actions-area input {
-z-index:10000;
+.ou__files__actions {
+  position: absolute;
+  bottom: 10px;
+  left: 7px;
+  right: 7px;
 }
-*/
-.uploader-actions-area .uploader-or-label {
-  font-size: 12px;
+.ou__files__actions .display-table {
+  table-layout: fixed;
 }
-.uploader-actions-area .uploader-drop-label {
-  font-size: 16px;
+.ou__files__actions .display-table-cell {
+  padding: 0 3px;
+  width: 100%;
 }
-.uploader-actions-area .uploader-or-label,
-.uploader-actions-area .uploader-drop-label {
-  margin-bottom: 5px;
+.ou__files__actions-btn {
+  border: none;
+  color: white;
 }
-.qq-upload-drop-area.qq-upload-drop-area-active {
-  background-color: #f1f1f1;
-  border: 3px dashed orange;
+.ou__files__progress {
+  height: 100%;
+  width: 100%;
 }
-.uploader-actions-area span,
-.uploader-filled-actions-area span {
-  display: block;
-  position: relative;
-  top: auto;
-  width: auto;
-  margin-top: inherit;
-  font-size: inherit;
+.ou__files__status-label--ribbon {
+  background-color: rgba(61, 160, 103, 0.8);
+  color: white;
+  padding: 2px 0 1px;
+  font-size: 11px;
 }
-.uploader-thumbnail-container {
+/**
+ * THUMBNAIL STYLES
+ */
+.ou__files__thumbnail {
   background-position: center center;
   background-repeat: no-repeat;
   height: 100px;
@@ -191,43 +179,31 @@ z-index:10000;
   width: 100px;
   background-size: contain;
 }
-.uploader-thumbnail-container.unfilled {
+.ou__files__thumbnail--unfilled {
   border: 2px dashed #d3c2a3;
 }
-.uploader-thumbnail-container.optimus-uploader-thumbnail-success {
+.ou__files__thumbnail--success {
   border: 2px dashed #a6cfc3;
 }
-.uploader-thumbnail-container.optimus-uploader-thumbnail-error {
+.ou__files__thumbnail--error {
   border: 2px dashed #fcb9b9;
 }
-.uploader-file-actions {
-  position: absolute;
-  bottom: 10px;
-  left: 7px;
-  right: 7px;
-}
-.uploader-file-actions .display-table {
-  table-layout: fixed;
-}
-.uploader-file-actions .display-table-cell {
-  padding: 0 3px;
-  width: 100%;
-}
-.uploader-container.optimus-uploader-single {
+/**
+ * STYLES FOR SINGLE UPLOADER
+ * i.e. a uploader that only takes a single file
+ */
+.ou--single {
   height: 250px;
   width: 250px;
 }
-.uploader-container.optimus-uploader-single.optimus-uploader-single-filled .qq-upload-drop-area {
+.ou--single.ou--single--filled .ou__drop-area {
   border: none;
   padding: 0;
 }
-.uploader-container.optimus-uploader-single.optimus-uploader-single-filled .qq-upload-drop-area .uploader-actions-area {
+.ou--single.ou--single--filled .ou__drop-area .ou__drop-area__actions {
   display: none;
 }
-.uploader-container.optimus-uploader-single .uploader-thumbnail-container.unfilled {
-  border: none;
-}
-.uploader-container.optimus-uploader-single .qq-upload-list {
+.ou--single .ou__files {
   bottom: 0;
   left: 0;
   margin: 0;
@@ -235,7 +211,7 @@ z-index:10000;
   right: 0;
   top: 0;
 }
-.uploader-container.optimus-uploader-single .qq-upload-list li {
+.ou--single .ou__files li {
   display: table;
   height: 100%;
   margin-left: 0;
@@ -243,81 +219,36 @@ z-index:10000;
   padding: 0;
   width: 100%;
 }
-.uploader-container.optimus-uploader-single .qq-upload-list li .qq-upload-status-text {
+.ou--single .ou__files__status-label {
   font-size: 18px;
-  top: 150px;
+  top: 130px;
 }
-.uploader-container.optimus-uploader-single .qq-upload-list li .optimus-uploader-icon {
+.ou--single .ou__files__size-label {
+  font-size: 12px;
+  margin-top: 35px;
+}
+.ou--single .ou__files__icon {
   height: 128px;
   width: 128px;
 }
-.uploader-container.optimus-uploader-single .qq-upload-list li .qq-progress-bar-container-selector {
-  margin: 0 10px;
-}
-.uploader-container.optimus-uploader-single .qq-upload-list li .uploader-thumbnail-container {
+.ou--single .ou__files__thumbnail {
   height: 100%;
   margin-bottom: 0;
   position: absolute;
   width: 100%;
   z-index: 0;
 }
-.uploader-container.optimus-uploader-single .qq-upload-list li.qq-upload-success .qq-upload-size {
-  display: block;
-  top: 163px;
-  font-size: 14px;
+.ou--single .ou__files__thumbnail--unfilled {
+  border: none;
 }
-.uploader-container.optimus-uploader-single .qq-upload-list li .optimus-uploader-status-text-ribbon.qq-upload-status-text {
+.ou--single .ou__files__status-label--ribbon {
   font-size: 12px;
   margin: 0 -10px;
 }
-.qq-upload-retry,
-.qq-upload-delete,
-.qq-upload-cancel,
-.qq-upload-pause,
-.qq-upload-continue {
-  border: none;
-  color: white;
-}
-/*.btn.btn-block {
-  display:block;
-}*/
-/*
-.btn.btn-block.qq-hide {
-  display:none;
-}
-
-.qq-upload-drop-area span.qq-hide {
-  display:none;
-}
-*/
-.qq-hide {
+.ou__files__primary-drag-label {
   display: none;
 }
-.qq-upload-file,
-.qq-upload-spinner,
-.qq-upload-size,
-.qq-upload-cancel,
-.qq-upload-retry,
-.qq-upload-failed-text,
-.qq-upload-delete,
-.qq-upload-pause,
-.qq-upload-continue {
-  margin-right: 0;
-}
-.optimus-uploader-progress {
-  height: 100%;
-  width: 100%;
-}
-.optimus-uploader-status-text-ribbon {
-  background-color: rgba(61, 160, 103, 0.8);
-  color: white;
-  padding: 2px 0 1px;
-  font-size: 11px;
-}
-.uploader-primary-label {
-  display: none;
-}
-.uploader-primary .uploader-primary-label {
+.ou--primary .ou__files__primary-drag-label {
   color: white;
   display: block;
   font-size: 9px;
@@ -328,6 +259,6 @@ z-index:10000;
   text-transform: uppercase;
   z-index: 500;
 }
-.qq-upload-list li.uploader-sortable-placeholder {
+.ou__uploads li.ou__files__primary-drag-placeholder {
   border: 3px dashed #cccccc;
 }
