@@ -1,31 +1,45 @@
-System.register([], function (_export) {
+System.register(['./error-handling'], function (_export) {
   'use strict';
 
-  var defaults, fineuploader_defaults;
+  var defaultErrorHandler, defaults, fineuploader_defaults;
   return {
-    setters: [],
+    setters: [function (_errorHandling) {
+      defaultErrorHandler = _errorHandling.defaultErrorHandler;
+    }],
     execute: function () {
       defaults = {
         allowedExtensions: [],
         callbacks: {},
+        confirmDelete: false,
         container: null,
+        deleteCheck: null,
+        errorHandler: defaultErrorHandler,
         fineUploaderOverrides: {},
         initiateOnCreation: false,
         limit: 0,
         maxFilenameDisplayLength: 20,
         messages: {
-          completedUpload: 'Completed.'
+          completedFile: 'Completed.',
+          completedImage: 'Completed.',
+          errors: {
+            'S0001': 'The file \'{}\' was not found on the server.',
+            'S0002': 'Thumbnail for the file \'{}\' was not found on the server.'
+          },
+          uploading: 'Uploading...'
         },
+        messageHandler: null,
         paths: {
           base_directory: null,
           sub_directory: null
         },
         plugins: [],
+        session: null,
+        sessionErrorHandler: null,
         sizeLimit: null,
         templatePathOrMarkup: null,
         template: {
           btnClass: 'btn-large',
-          btnLabel: '<i class="glyphicon glyphicon-file"></i> Select File(s) on Drive',
+          btnLabel: '<i class=\'glyphicon glyphicon-file\'></i> Select File(s) on Drive',
           dropLabel: 'Drop Files Here to Upload'
         },
         thumbnails: {
@@ -59,6 +73,10 @@ System.register([], function (_export) {
         retry: {
           showAutoRetryNote: false,
           enableAuto: true },
+        session: {
+          endpoint: '/uploader/session',
+          params: {}
+        },
         thumbnails: {
           placeholders: {
             notAvailablePath: '../dist/assets/images/placeholders/not_available-generic.png',

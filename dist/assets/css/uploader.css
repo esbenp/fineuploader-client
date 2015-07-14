@@ -1,4 +1,5 @@
 .optimus-uploader-icon {
+  background-image: url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zOnNrZXRjaD0iaHR0cDovL3d3dy5ib2hlbWlhbmNvZGluZy5jb20vc2tldGNoL25zIg0KCSB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjMycHgiIGhlaWdodD0iMzJweCINCgkgdmlld0JveD0iMCAwIDMyIDMyIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCAzMiAzMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8dGl0bGU+PC90aXRsZT4NCjxkZXNjPjwvZGVzYz4NCjxnIGlkPSJQYWdlLTEiPg0KCTxnIGlkPSJpY29uLTEzMC1jbG91ZC11cGxvYWQiPg0KCQk8cGF0aCBpZD0iY2xvdWQtdXBsb2FkIiBmaWxsPSIjRDNDMkEzIiBkPSJNMTYsMTZsLTMuMjUsMy4yNUwxMiwxOC41bDQuNS00LjVsNC41LDQuNWwtMC43NSwwLjc1TDE3LDE2djExaC0xVjE2TDE2LDE2eiBNMTUsMjENCgkJCUg4LjAwM0M1Ljc5OCwyMSw0LDE5LjIwOSw0LDE3YzAtMS44OTYsMS4zMjUtMy40ODgsMy4xMDEtMy44OThsMCwwQzcuMDM1LDEyLjc0NSw3LDEyLjM3Niw3LDEyYzAtMy4zMTMsMi42ODctNiw2LTYNCgkJCWMyLjYxNSwwLDQuODQsMS42NzMsNS42NjIsNC4wMDhDMTkuNDM2LDkuMzc4LDIwLjQyNCw5LDIxLjUsOWMyLjM1OCwwLDQuMjkzLDEuODE0LDQuNDg0LDQuMTIzbDAsMA0KCQkJQzI3LjcxNSwxMy41NjMsMjksMTUuMTMyLDI5LDE3YzAsMi4yMDUtMS43OTIsNC00LjAwMyw0SDE4djFoN2MyLjc2MiwwLDUtMi4yNDQsNS01YzAtMi4wOTctMS4yODctMy44OTItMy4xMTctNC42MzVsMCwwDQoJCQlDMjYuMzU5LDkuODcyLDI0LjE0OCw4LDIxLjUsOGMtMC44NjMsMC0xLjY4LDAuMTk5LTIuNDA2LDAuNTUzQzE3Ljg5MSw2LjQzMiwxNS42MTMsNSwxMyw1Yy0zLjg2NiwwLTcsMy4xMzQtNyw3DQoJCQljMCwwLjEzOCwwLjAwNCwwLjI3NSwwLjAxMiwwLjQxMmwwLDBDNC4yNCwxMy4xODIsMywxNC45NDksMywxN2MwLDIuNzYyLDIuMjMyLDUsNSw1aDdWMjFMMTUsMjFMMTUsMjF6Ii8+DQoJPC9nPg0KPC9nPg0KPC9zdmc+DQo=');
   background-size: cover;
   height: 48px;
   margin: 8px auto 0 auto;
@@ -51,11 +52,11 @@
   display: table;
   width: 100%;
   /*
-  &.uploader-single {
-  span.qq-upload-status-text, span.qq-upload-size {
-  width:100%;
-}
-}*/
+    &.uploader-single {
+    span.qq-upload-status-text, span.qq-upload-size {
+    width:100%;
+  }
+  }*/
 }
 .uploader-container .qq-upload-drop-area {
   background: transparent;
@@ -90,49 +91,49 @@
   position: relative;
   width: 122px;
   /*  &.active {
-      border:1px dashed #468847 !important;
-    }
-*/
-  /*&.qq-upload-success, &.qq-upload-error span.qq-upload-size {
-      color:white;
-      margin-top:0;
-    }
-
-    &&.qq-upload-success span.qq-upload-size {
-      background:green;
-    }
-
-    &&.qq-upload-error span.qq-upload-size {
-      background:red;
-    }*/
-  /*.uploader-thumb {
-      display:block;
-      margin-bottom:5px;
-    }*/
-  /*span {
-    color:black;
-    font-size:12px;
-    padding:2px 0;
-    width:100px;
-  }
+        border:1px dashed #468847 !important;
+      }
   */
+  /*&.qq-upload-success, &.qq-upload-error span.qq-upload-size {
+        color:white;
+        margin-top:0;
+      }
+
+      &&.qq-upload-success span.qq-upload-size {
+        background:green;
+      }
+
+      &&.qq-upload-error span.qq-upload-size {
+        background:red;
+      }*/
+  /*.uploader-thumb {
+        display:block;
+        margin-bottom:5px;
+      }*/
+  /*span {
+      color:black;
+      font-size:12px;
+      padding:2px 0;
+      width:100px;
+    }
+    */
   /*.select-overlay {
-  background:black;
-  display:none;
-  height:100%;
-  left:0;
-  opacity:0.1;
-  position:absolute;
-  top:0;
-  width:100%;
-  }*/
+    background:black;
+    display:none;
+    height:100%;
+    left:0;
+    opacity:0.1;
+    position:absolute;
+    top:0;
+    width:100%;
+    }*/
   /*.qq-upload-cancel.qq-hide, .qq-upload-retry.qq-hide ,
-  .qq-upload-delete.qq-hide, .qq-upload-pause.qq-hide {
-  display:none;
-  }*/
+    .qq-upload-delete.qq-hide, .qq-upload-pause.qq-hide {
+    display:none;
+    }*/
   /*.progress {
-  margin-bottom:0;
-  }*/
+    margin-bottom:0;
+    }*/
 }
 .uploader-container .qq-upload-list li.qq-upload-success {
   background-color: #f3faf8;
@@ -191,7 +192,7 @@ z-index:10000;
   background-size: contain;
 }
 .uploader-thumbnail-container.unfilled {
-  border: 2px dashed #b7b7b7;
+  border: 2px dashed #d3c2a3;
 }
 .uploader-thumbnail-container.optimus-uploader-thumbnail-success {
   border: 2px dashed #a6cfc3;
@@ -212,22 +213,29 @@ z-index:10000;
   padding: 0 3px;
   width: 100%;
 }
-.uploader-container.uploader-single .qq-upload-drop-area.filled {
+.uploader-container.optimus-uploader-single {
+  height: 250px;
+  width: 250px;
+}
+.uploader-container.optimus-uploader-single.optimus-uploader-single-filled .qq-upload-drop-area {
   border: none;
   padding: 0;
 }
-.uploader-container.uploader-single .uploader-thumbnail-container.unfilled {
+.uploader-container.optimus-uploader-single.optimus-uploader-single-filled .qq-upload-drop-area .uploader-actions-area {
+  display: none;
+}
+.uploader-container.optimus-uploader-single .uploader-thumbnail-container.unfilled {
   border: none;
 }
-.uploader-container.uploader-single .qq-upload-list {
+.uploader-container.optimus-uploader-single .qq-upload-list {
   bottom: 0;
   left: 0;
-  margin-left: 0;
+  margin: 0;
   position: absolute;
   right: 0;
   top: 0;
 }
-.uploader-container.uploader-single .qq-upload-list li {
+.uploader-container.optimus-uploader-single .qq-upload-list li {
   display: table;
   height: 100%;
   margin-left: 0;
@@ -235,18 +243,32 @@ z-index:10000;
   padding: 0;
   width: 100%;
 }
-.uploader-container.uploader-single .qq-upload-list li .qq-progress-bar-container-selector {
+.uploader-container.optimus-uploader-single .qq-upload-list li .qq-upload-status-text {
+  font-size: 18px;
+  top: 150px;
+}
+.uploader-container.optimus-uploader-single .qq-upload-list li .optimus-uploader-icon {
+  height: 128px;
+  width: 128px;
+}
+.uploader-container.optimus-uploader-single .qq-upload-list li .qq-progress-bar-container-selector {
   margin: 0 10px;
 }
-.uploader-container.uploader-single .qq-upload-list li .uploader-thumbnail-container {
+.uploader-container.optimus-uploader-single .qq-upload-list li .uploader-thumbnail-container {
   height: 100%;
   margin-bottom: 0;
   position: absolute;
   width: 100%;
   z-index: 0;
 }
-.uploader-container.uploader-single .qq-upload-list li.qq-upload-success .qq-upload-size {
-  display: none;
+.uploader-container.optimus-uploader-single .qq-upload-list li.qq-upload-success .qq-upload-size {
+  display: block;
+  top: 163px;
+  font-size: 14px;
+}
+.uploader-container.optimus-uploader-single .qq-upload-list li .optimus-uploader-status-text-ribbon.qq-upload-status-text {
+  font-size: 12px;
+  margin: 0 -10px;
 }
 .qq-upload-retry,
 .qq-upload-delete,
@@ -285,6 +307,12 @@ z-index:10000;
 .optimus-uploader-progress {
   height: 100%;
   width: 100%;
+}
+.optimus-uploader-status-text-ribbon {
+  background-color: rgba(61, 160, 103, 0.8);
+  color: white;
+  padding: 2px 0 1px;
+  font-size: 11px;
 }
 .uploader-primary-label {
   display: none;

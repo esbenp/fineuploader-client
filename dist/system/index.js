@@ -1,4 +1,4 @@
-System.register(['./uploader', './template/engine/index', './template/loader/index'], function (_export) {
+System.register(['./uploader', './template/engine/index', './template/loader/index', './plugins/index'], function (_export) {
   'use strict';
 
   return {
@@ -8,6 +8,8 @@ System.register(['./uploader', './template/engine/index', './template/loader/ind
       _export('engines', _templateEngineIndex.engines);
     }, function (_templateLoaderIndex) {
       _export('loaders', _templateLoaderIndex.loaders);
+    }, function (_pluginsIndex) {
+      _export('plugins', _pluginsIndex.plugins);
     }],
     execute: function () {}
   };

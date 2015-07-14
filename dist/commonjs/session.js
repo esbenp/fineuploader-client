@@ -7,22 +7,29 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 var _utilities = require('./utilities');
 
 var Session = (function () {
-  function Session() {
+  function Session(uploader) {
     _classCallCheck(this, Session);
+
+    this._session = null;
+    this._uploader = uploader;
+
+    this.setSession(this._uploader.settings.session);
   }
 
-  Session.prototype.mapSession = function mapSession(files) {
-    if (_utilities.isString(files)) {
-      files = [files];
+  Session.prototype.getSession = function getSession() {
+    return this._session;
+  };
+
+  Session.prototype.setSession = function setSession(session) {
+    this._session = session;
+  };
+
+  Session.prototype.mapSession = function mapSession(session) {
+    if (_utilities.isString(session)) {
+      session = [session];
     }
 
-    return files.map(function (file) {
-      return {
-        name: file.split('/')[1],
-        type: 'session',
-        uuid: _utilities.guid()
-      };
-    });
+    return session;
   };
 
   return Session;

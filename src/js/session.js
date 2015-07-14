@@ -1,21 +1,26 @@
 import {isString, guid} from './utilities';
 
 export class Session {
-  constructor(){
+  constructor(uploader){
+    this._session = null;
+    this._uploader = uploader;
 
+    this.setSession(this._uploader.settings.session);
   }
 
-  mapSession(files) {
-    if (isString(files)) {
-      files = [files];
+  getSession() {
+    return this._session;
+  }
+
+  setSession(session) {
+    this._session = session;
+  }
+
+  mapSession(session) {
+    if (isString(session)) {
+      session = [session];
     }
 
-    return files.map(function(file){
-      return {
-        name: file.split('/')[1],
-        type: 'session',
-        uuid: guid()
-      }
-    });
+    return session;
   }
 }

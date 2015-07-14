@@ -13,3 +13,7 @@ exports.engines = _templateEngineIndex.engines;
 var _templateLoaderIndex = require('./template/loader/index');
 
 exports.loaders = _templateLoaderIndex.loaders;
+
+var _pluginsIndex = require('./plugins/index');
+
+exports.plugins = _pluginsIndex.plugins;

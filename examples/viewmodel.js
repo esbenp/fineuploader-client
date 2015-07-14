@@ -1,26 +1,59 @@
-define(['knockout', 'uploader/amd/index', 'require'], function(ko, Uploader, require){
+define([
+  'knockout',
+  'uploader/amd/index',
+  'require',
+  'bootstrap'
+], function(ko, Uploader, require){
     var viewmodel = function viewmodel(){
-
+      this.single = ko.observable();
+      this.singleInstance = null;
+      this.multiple = ko.observableArray();
+      this.multipleInstance = null;
     }
 
     viewmodel.prototype.attached = function attached(){
       var KnockoutEngine = new Uploader.engines.knockout(ko);
       var RequireJsTextLoader = new Uploader.loaders.requireJsText(require);
+      var PrimaryDrag = new Uploader.plugins.primaryDrag();
+      var SingleKnockoutObservable = new Uploader.plugins.knockoutObservable(this.single);
+      var MultipleKnockoutObservable = new Uploader.plugins.knockoutObservable(this.multiple);
 
-      /*this.single = new Uploader.Uploader({
+      this.singleInstance = new Uploader.Uploader({
           container: document.getElementById('single'),
           templatePathOrMarkup: "uploader/assets/html/uploader.min.html",
           limit: 1,
           url_prefix: "http://laravel-packages.dev",
+          messages: {
+            completedFile: function(fineUploader, id){
+              return fineUploader.getName(id);
+            }
+          },
+          errorHandler: function(error) {console.log("ERROR", error);},
           paths: {
             base_directory: 'products'
+          },
+          plugins: [
+            SingleKnockoutObservable
+          ],
+          thumbnails: {
+            height: 250,
+            width: 250
+          },
+          //confirmDelete: true,
+          deleteCheck: function(filename, promise) {
+            promise.resolve();
+          },
+          sessionErrorHandler: function(uploader, i, serverResponse, errorMessage, xhr) {
+            console.log(serverResponse);
           }
       }, KnockoutEngine, RequireJsTextLoader);
 
-      this.single.initialize();
-*/
-      this.multiple = new Uploader.Uploader({
-          container: document.getElementById('multiple'),
+      this.single("products/55a36a3b6adee.jpg");
+
+      this.singleInstance.initialize();
+
+      this.multipleInstance = new Uploader.Uploader({
+        container: document.getElementById('multiple'),
           fineUploaderOverrides: {
             retry: {
               maxAutoAttempts: 0
@@ -28,7 +61,7 @@ define(['knockout', 'uploader/amd/index', 'require'], function(ko, Uploader, req
           },
           maxFilenameDisplayLength: 5,
           messages: {
-            completedUpload: function(fineUploader, id){
+            completedFile: function(fineUploader, id){
               return fineUploader.getName(id);
             }
           },
@@ -37,10 +70,18 @@ define(['knockout', 'uploader/amd/index', 'require'], function(ko, Uploader, req
           url_prefix: "http://laravel-packages.dev",
           paths: {
             base_directory: 'products'
-          }
+          },
+          session: [
+            "products/55a36a5d4bc63.jpg",
+            "products/55a363a07352e.jpg"
+          ],
+          plugins: [
+            MultipleKnockoutObservable,
+            PrimaryDrag
+          ]
       }, KnockoutEngine, RequireJsTextLoader);
 
-      this.multiple.initialize();
+      this.multipleInstance.initialize();
     }
 
     return viewmodel;

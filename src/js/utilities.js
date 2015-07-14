@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import qq from 'fineuploader';
 
 // http://stackoverflow.com/a/384380/602488
 export function isElement(obj) {
@@ -14,6 +15,10 @@ export function isElement(obj) {
       (obj.nodeType===1) && (typeof obj.style === "object") &&
       (typeof obj.ownerDocument ==="object");
   }
+}
+
+export function isArray(input) {
+  return input instanceof Array;
 }
 
 export function isFunction(input) {
@@ -38,12 +43,15 @@ export function guid() {
     s4() + '-' + s4() + s4() + s4();
 }
 
-export function stringOrFunction() {
-  var args = Array.prototype.slice.call(arguments);
-  var subject = args.shift();
+export function stringOrFunction(subject) {
+  var args = Array.prototype.slice.call(arguments, 1);
 
   if (isString(subject)) {
-    return subject;
+    if (subject.match('{}')) {
+      return qq.format.apply(qq.format, [subject].concat(args));
+    } else {
+      return subject;
+    }
   } else if (isFunction(subject)){
     return subject.apply(this, args);
   } else {

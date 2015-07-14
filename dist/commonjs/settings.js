@@ -1,27 +1,42 @@
 'use strict';
 
 exports.__esModule = true;
+
+var _errorHandling = require('./error-handling');
+
 var defaults = {
   allowedExtensions: [],
   callbacks: {},
+  confirmDelete: false,
   container: null,
+  deleteCheck: null,
+  errorHandler: _errorHandling.defaultErrorHandler,
   fineUploaderOverrides: {},
   initiateOnCreation: false,
   limit: 0,
   maxFilenameDisplayLength: 20,
   messages: {
-    completedUpload: 'Completed.'
+    completedFile: 'Completed.',
+    completedImage: 'Completed.',
+    errors: {
+      'S0001': 'The file \'{}\' was not found on the server.',
+      'S0002': 'Thumbnail for the file \'{}\' was not found on the server.'
+    },
+    uploading: 'Uploading...'
   },
+  messageHandler: null,
   paths: {
     base_directory: null,
     sub_directory: null
   },
   plugins: [],
+  session: null,
+  sessionErrorHandler: null,
   sizeLimit: null,
   templatePathOrMarkup: null,
   template: {
     btnClass: 'btn-large',
-    btnLabel: '<i class="glyphicon glyphicon-file"></i> Select File(s) on Drive',
+    btnLabel: '<i class=\'glyphicon glyphicon-file\'></i> Select File(s) on Drive',
     dropLabel: 'Drop Files Here to Upload'
   },
   thumbnails: {
@@ -54,6 +69,10 @@ var fineuploader_defaults = {
   retry: {
     showAutoRetryNote: false,
     enableAuto: true },
+  session: {
+    endpoint: '/uploader/session',
+    params: {}
+  },
   thumbnails: {
     placeholders: {
       notAvailablePath: '../dist/assets/images/placeholders/not_available-generic.png',

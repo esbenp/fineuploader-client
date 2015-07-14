@@ -20,7 +20,9 @@ var _templateTemplateManager = require('./template/template-manager');
 
 var _fineuploader = require('fineuploader');
 
-var _events = require('./events');
+var _session = require('./session');
+
+var _eventsIndex = require('./events/index');
 
 var Uploader = (function () {
   function Uploader(settings, templateEngine, templateLoader) {
@@ -28,6 +30,9 @@ var Uploader = (function () {
 
     var uploaderId = _utilities.guid();
     this.uploaderId = 'uploader_' + uploaderId;
+    this._initialized = false;
+
+    this.events = {};
 
     this.settings = this._generateSettings(settings);
 
@@ -35,12 +40,7 @@ var Uploader = (function () {
       return _logging.err('Settings were not generated correctly.', settings);
     }
 
-    this.fineUploaderSettings = this._generateFineuploaderSettings();
-
-    if (this.fineUploaderSettings === false) {
-      return _logging.err('Fineuploader settings were not generated correctly.');
-    }
-
+    this._session = new _session.Session(this);
     this._template = new _templateTemplateManager.TemplateManager(templateEngine, templateLoader);
 
     if (this.settings.initiateOnCreation === true) {
@@ -56,6 +56,17 @@ var Uploader = (function () {
     var self = this;
     var templateMarkupPromise = this._template.load(this.settings.templatePathOrMarkup);
 
+    var plugins = this._initializePlugins();
+    if (!plugins) {
+      return plugins;
+    }
+
+    this.fineUploaderSettings = this._generateFineuploaderSettings();
+
+    if (this.fineUploaderSettings === false) {
+      return _logging.err('Fineuploader settings were not generated correctly.');
+    }
+
     _jquery2['default'].when(templateMarkupPromise).then(function (markup) {
       var node = self._template.appendMarkupToContainer(markup, self.settings.container);
       node.id = self.uploaderId;
@@ -65,7 +76,45 @@ var Uploader = (function () {
       }
 
       self._initializeFineUploader(self.settings.container, self.fineUploaderSettings);
+      self._initialize = true;
     });
+  };
+
+  Uploader.prototype.fire = function fire(type, index) {
+    var args = Array.prototype.slice.call(arguments, 2);
+    this.events[type][index].apply(this, args);
+  };
+
+  Uploader.prototype.fireAll = function fireAll(type) {
+    var args = Array.prototype.slice.call(arguments, 1);
+    var events = this.events[type];
+    for (var i in events) {
+      events[i].apply(this, args);
+    }
+  };
+
+  Uploader.prototype.isInitialized = function isInitialized() {
+    return this._initialized;
+  };
+
+  Uploader.prototype.listen = function listen(type, callback) {
+    if (!_utilities.isArray(this.events[type])) {
+      this.events[type] = [];
+    }
+
+    this.events[type].push(callback);
+  };
+
+  Uploader.prototype.setSession = function setSession(session) {
+    if (!_utilities.isUndefined(this.fineUploaderSettings)) {
+      return _logging.err('Fineuploader settings have already been set. To late to ' + 'alter the initial session now.');
+    }
+
+    if (typeof session === 'undefined' || session === null) {
+      return;
+    }
+
+    this._session.setSession(session);
   };
 
   Uploader.prototype._initializeFineUploader = function _initializeFineUploader(container, settings) {
@@ -81,6 +130,7 @@ var Uploader = (function () {
     if (this.settings.url_prefix !== false) {
       settings.deleteFile.endpoint = this.settings.url_prefix + settings.deleteFile.endpoint;
       settings.request.endpoint = this.settings.url_prefix + settings.request.endpoint;
+      settings.session.endpoint = this.settings.url_prefix + settings.session.endpoint;
     }
 
     if (this.settings.allowedExtensions instanceof Array) {
@@ -91,15 +141,42 @@ var Uploader = (function () {
       settings.validation.sizeLimit = this.settings.sizeLimit;
     }
 
+    if (this.settings.confirmDelete === true) {
+      settings.deleteFile.forceConfirm = true;
+    }
+
+    if (this.settings.messageHandler !== null) {
+      var self = this;
+      settings.showMessage = function () {
+        var args = ['message'].concat(Array.prototype.slice.call(arguments));
+        return self.settings.messageHandler.apply(this, args);
+      };
+
+      settings.showConfirm = function () {
+        var args = ['confirm'].concat(Array.prototype.slice.call(arguments));
+        return self.settings.messageHandler.apply(this, args);
+      };
+    }
+
+    var session = this._session.getSession();
+    if (session === null) {
+      delete settings.session;
+    } else {
+      settings.session.params.optimus_uploader_files = this._session.mapSession(session);
+    }
+
     settings.validation.itemLimit = this.settings.limit;
 
     settings.callbacks = {
-      onComplete: this._wrapCallback(_events.onComplete),
-      onDeleteComplete: this._wrapCallback(_events.onDeleteComplete),
-      onError: this._wrapCallback(_events.onError),
-      onProgress: this._wrapCallback(_events.onProgress),
-      onSessionRequestComplete: this._wrapCallback(_events.onSessionRequestComplete),
-      onSubmit: this._wrapCallback(_events.onSubmit)
+      onComplete: this._wrapCallback(_eventsIndex.onComplete),
+      onDeleteComplete: this._wrapCallback(_eventsIndex.onDeleteComplete),
+      onError: this._wrapCallback(_eventsIndex.onError),
+      onProgress: this._wrapCallback(_eventsIndex.onProgress),
+      onStatusChange: this._wrapCallback(_eventsIndex.onStatusChange),
+      onSessionRequestComplete: this._wrapCallback(_eventsIndex.onSessionRequestComplete),
+      onSubmit: this._wrapCallback(_eventsIndex.onSubmit),
+      onSubmitDelete: this._wrapCallback(_eventsIndex.onSubmitDelete),
+      onUpload: this._wrapCallback(_eventsIndex.onUpload)
     };
 
     _jquery2['default'].extend(true, settings, this.settings.fineUploaderOverrides);
@@ -107,6 +184,18 @@ var Uploader = (function () {
     settings.request.params = this._generateRequestParameters(this.settings, settings);
 
     return settings;
+  };
+
+  Uploader.prototype._initializePlugins = function _initializePlugins() {
+    for (var i in this.settings.plugins) {
+      var plugin = this.settings.plugins[i];
+      if (!_utilities.isFunction(plugin.__setUploader)) {
+        return _logging.err('A plugin should aways implement a __setUploader method');
+      }
+
+      plugin.__setUploader(this);
+    }
+    return true;
   };
 
   Uploader.prototype._generateRequestParameters = function _generateRequestParameters(settings, fineUploaderSettings) {
@@ -141,7 +230,7 @@ var Uploader = (function () {
     return function () {
       var args = Array.prototype.slice.call(arguments);
       args.unshift(uploader);
-      callback.apply(this, args);
+      return callback.apply(this, args);
     };
   };
 

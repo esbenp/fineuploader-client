@@ -7,117 +7,117 @@
   display:table;
   width:100%;
 
-  /*
-  &.uploader-single {
-  span.qq-upload-status-text, span.qq-upload-size {
-  width:100%;
-}
-}*/
-
-// The drop area container
-.qq-upload-drop-area {
-  background:transparent;
-  display:table-cell;
-  border:3px dashed @drop_area_border_color;
-  position:relative;
-  padding:@drop_area_padding;
-  text-align:center;
-  vertical-align:middle;
-}
-
-.qq-upload-list {
-  .ul-navigation;
-
-  margin-left:-15px;
-  margin-top:(@upload_area_top_margin - @upload_margin);
-
-  li {
-    //.alert;
-
-    transition:none !important;
-    border: 1px solid #F0DBB4;
-    border-radius:3px;
-    font-size:12px;
-    height:@upload_height;
-    margin-top:@upload_margin;
-    margin-left:@upload_margin;
-    padding:@upload_padding;
-    position:relative;
-    width:@upload_width;
-
-  /*  &.active {
-      border:1px dashed #468847 !important;
-    }
-*/
-    &.qq-upload-success {
-      background-color: @upload_success_background;
-      border-color: @upload_success_border;
-    }
-
-    &.qq-upload-fail {
-      background-color: @upload_error_background;
-      border-color: @upload_error_border;
-    }
-
-    /*&.qq-upload-success, &.qq-upload-error span.qq-upload-size {
-      color:white;
-      margin-top:0;
-    }
-
-    &&.qq-upload-success span.qq-upload-size {
-      background:green;
-    }
-
-    &&.qq-upload-error span.qq-upload-size {
-      background:red;
-    }*/
-
-    /*.uploader-thumb {
-      display:block;
-      margin-bottom:5px;
-    }*/
-
-    .qq-upload-size, .qq-upload-status-text {
-      display: block;
-      left:@upload_padding;
-      position: absolute;
-      right:@upload_padding;
-      top: 50%;
-    }
-
-    .qq-upload-size {
-      font-size: 10px;
-      margin-top: 15px;
-    }
-
-    /*span {
-    color:black;
-    font-size:12px;
-    padding:2px 0;
-    width:100px;
+    /*
+    &.uploader-single {
+    span.qq-upload-status-text, span.qq-upload-size {
+    width:100%;
   }
+  }*/
+
+  // The drop area container
+  .qq-upload-drop-area {
+    background:transparent;
+    display:table-cell;
+    border:3px dashed @drop_area_border_color;
+    position:relative;
+    padding:@drop_area_padding;
+    text-align:center;
+    vertical-align:middle;
+  }
+
+  .qq-upload-list {
+    .ul-navigation;
+
+    margin-left:-15px;
+    margin-top:(@upload_area_top_margin - @upload_margin);
+
+    li {
+      //.alert;
+
+      transition:none !important;
+      border: 1px solid #F0DBB4;
+      border-radius:3px;
+      font-size:12px;
+      height:@upload_height;
+      margin-top:@upload_margin;
+      margin-left:@upload_margin;
+      padding:@upload_padding;
+      position:relative;
+      width:@upload_width;
+
+    /*  &.active {
+        border:1px dashed #468847 !important;
+      }
   */
-  /*.select-overlay {
-  background:black;
-  display:none;
-  height:100%;
-  left:0;
-  opacity:0.1;
-  position:absolute;
-  top:0;
-  width:100%;
-  }*/
+      &.qq-upload-success {
+        background-color: @upload_success_background;
+        border-color: @upload_success_border;
+      }
 
-  /*.qq-upload-cancel.qq-hide, .qq-upload-retry.qq-hide ,
-  .qq-upload-delete.qq-hide, .qq-upload-pause.qq-hide {
-  display:none;
-  }*/
+      &.qq-upload-fail {
+        background-color: @upload_error_background;
+        border-color: @upload_error_border;
+      }
 
-  /*.progress {
-  margin-bottom:0;
-  }*/
-}
-}
+      /*&.qq-upload-success, &.qq-upload-error span.qq-upload-size {
+        color:white;
+        margin-top:0;
+      }
+
+      &&.qq-upload-success span.qq-upload-size {
+        background:green;
+      }
+
+      &&.qq-upload-error span.qq-upload-size {
+        background:red;
+      }*/
+
+      /*.uploader-thumb {
+        display:block;
+        margin-bottom:5px;
+      }*/
+
+      .qq-upload-size, .qq-upload-status-text {
+        display: block;
+        left:@upload_padding;
+        position: absolute;
+        right:@upload_padding;
+        top: 50%;
+      }
+
+      .qq-upload-size {
+        font-size: 10px;
+        margin-top: 15px;
+      }
+
+      /*span {
+      color:black;
+      font-size:12px;
+      padding:2px 0;
+      width:100px;
+    }
+    */
+    /*.select-overlay {
+    background:black;
+    display:none;
+    height:100%;
+    left:0;
+    opacity:0.1;
+    position:absolute;
+    top:0;
+    width:100%;
+    }*/
+
+    /*.qq-upload-cancel.qq-hide, .qq-upload-retry.qq-hide ,
+    .qq-upload-delete.qq-hide, .qq-upload-pause.qq-hide {
+    display:none;
+    }*/
+
+    /*.progress {
+    margin-bottom:0;
+    }*/
+    }
+  }
 }
 /*
 .uploader-actions-area input {
@@ -187,10 +187,17 @@ z-index:10000;
   }
 }
 
-.uploader-container.uploader-single {
-  .qq-upload-drop-area.filled {
+.uploader-container.optimus-uploader-single {
+  height:250px;
+  width:250px;
+
+  &.optimus-uploader-single-filled .qq-upload-drop-area {
     border:none;
     padding:0;
+
+    .uploader-actions-area {
+      display:none;
+    }
   }
 
   .uploader-thumbnail-container.unfilled {
@@ -200,7 +207,7 @@ z-index:10000;
   .qq-upload-list {
     bottom:0;
     left:0;
-    margin-left:0;
+    margin:0;
     position:absolute;
     right:0;
     top:0;
@@ -212,6 +219,16 @@ z-index:10000;
       margin-top:0;
       padding:0;
       width:100%;
+
+      .qq-upload-status-text {
+        font-size:18px;
+        top:150px;
+      }
+
+      .optimus-uploader-icon {
+        height:128px;
+        width:128px;
+      }
 
       .qq-progress-bar-container-selector {
         margin:0 10px;
@@ -226,7 +243,14 @@ z-index:10000;
       }
 
       &.qq-upload-success .qq-upload-size {
-        display:none;
+        display: block;
+        top: 163px;
+        font-size: 14px;
+      }
+
+      .optimus-uploader-status-text-ribbon.qq-upload-status-text {
+        font-size:12px;
+        margin:0 -10px;
       }
     }
   }
@@ -265,6 +289,13 @@ z-index:10000;
 .optimus-uploader-progress {
   height:100%;
   width:100%;
+}
+
+.optimus-uploader-status-text-ribbon {
+  background-color: rgba(61, 160, 103, 0.8);
+  color: white;
+  padding: 2px 0 1px;
+  font-size: 11px;
 }
 
 @import 'plugins/primary-drag.less';
