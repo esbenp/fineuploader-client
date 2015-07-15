@@ -1,0 +1,40 @@
+/**
+ * THE DROP AREA
+ */
+
+// The main drop area container
+.ou__drop-area {
+  background:transparent;
+  display:table-cell;
+  border:3px dashed @drop_area_border_color;
+  position:relative;
+  padding:@drop_area_padding;
+  text-align:center;
+  vertical-align:middle;
+}
+
+// On hover
+// Have to use fineuploader active class
+.ou__drop-area.qq-upload-drop-area-active {
+  background-color:#f1f1f1;
+  border:3px dashed orange;
+}
+
+// The labels and button area
+.ou__drop-area__actions-label {
+  display:block;
+  position: relative;
+  top: auto;
+  width: auto;
+  margin-top: inherit;
+  margin-bottom:5px;
+  font-size: inherit;
+}
+
+.ou__drop-area__actions-label--or {
+  font-size:12px;
+}
+
+.ou__drop-area__actions-label--drop {
+  font-size:16px;
+}

@@ -3,7 +3,11 @@ requirejs.config({
     paths: {
         'dist': "../dist",
         'examples': '../examples',
-        'uploader': '../dist',
+        'fineuploader-client': '../dist/amd',
+        'fineuploader-client-assets': '../dist/assets',
+        'uploader-requirejs': 'fineuploader-client-requirejs/dist',
+        'uploader-knockout': 'fineuploader-client-knockout/dist',
+        'uploader-primary-drag': 'fineuploader-client-primary-drag/dist',
 
         'fineuploader': 'fine-uploader/_build/fine-uploader',
         'text': 'requirejs-text/text',

@@ -1,0 +1,75 @@
+/**
+ * STYLES FOR SINGLE UPLOADER
+ * i.e. a uploader that only takes a single file
+ */
+
+.ou--single {
+  height:250px;
+  width:250px;
+
+  // Remove placeholder borders and padding when a single
+  // uploader has been filled with an upload
+  &.ou--single--filled .ou__drop-area {
+    border:none;
+    padding:0;
+
+    // Also hide the actions
+    .ou__drop-area__actions {
+      display:none;
+    }
+  }
+
+  // The list will be reduced to contain a single element
+  .ou__files {
+    bottom:0;
+    left:0;
+    margin:0;
+    position:absolute;
+    right:0;
+    top:0;
+
+    li {
+      display:table;
+      height:100%;
+      margin-left:0;
+      margin-top:0;
+      padding:0;
+      width:100%;
+    }
+  }
+
+  // Increase the size of the status label ("Completed", "Uploading" etc.)
+  .ou__files__status-label {
+    font-size:18px;
+    top:130px;
+  }
+
+  .ou__files__size-label {
+    font-size:12px;
+    margin-top:35px;
+  }
+
+  // Increase the size of the icon
+  .ou__files__icon {
+    height:128px;
+    width:128px;
+  }
+
+  .ou__files__thumbnail {
+    height: 100%;
+    margin-bottom: 0;
+    position:absolute;
+    width: 100%;
+    z-index:0;
+  }
+
+  // ??
+  .ou__files__thumbnail--unfilled {
+    border:none;
+  }
+
+  .ou__files__status-label--ribbon {
+    font-size:12px;
+    margin:0 -10px;
+  }
+}

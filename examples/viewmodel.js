@@ -1,9 +1,13 @@
 define([
   'knockout',
-  'uploader/amd/index',
+  'fineuploader-client/index',
+  'uploader-knockout/amd/template/knockout-engine',
+  'uploader-requirejs/amd/requirejs-text-loader',
+  'uploader-knockout/amd/plugins/knockout-observable',
+  'uploader-primary-drag/amd/plugins/primary-drag',
   'require',
   'bootstrap'
-], function(ko, Uploader, require){
+], function(ko, Uploader, engine, loader, koPlugin, dragPlugin, require){
     var viewmodel = function viewmodel(){
       this.single = ko.observable();
       this.singleInstance = null;
@@ -12,15 +16,15 @@ define([
     }
 
     viewmodel.prototype.attached = function attached(){
-      var KnockoutEngine = new Uploader.engines.knockout(ko);
-      var RequireJsTextLoader = new Uploader.loaders.requireJsText(require);
-      var PrimaryDrag = new Uploader.plugins.primaryDrag();
-      var SingleKnockoutObservable = new Uploader.plugins.knockoutObservable(this.single);
-      var MultipleKnockoutObservable = new Uploader.plugins.knockoutObservable(this.multiple);
+      var KnockoutEngine = new engine.KnockoutEngine(ko);
+      var RequireJsTextLoader = new loader.RequirejsTextLoader(require);
+      var PrimaryDrag = new dragPlugin.PrimaryDrag();
+      var SingleKnockoutObservable = new koPlugin.KnockoutObservable(this.single);
+      var MultipleKnockoutObservable = new koPlugin.KnockoutObservable(this.multiple);
 
       this.singleInstance = new Uploader.Uploader({
           container: document.getElementById('single'),
-          templatePathOrMarkup: "uploader/assets/html/uploader.min.html",
+          templatePathOrMarkup: "fineuploader-client-assets/html/uploader.min.html",
           limit: 1,
           url_prefix: "http://laravel-packages.dev",
           messages: {
@@ -66,7 +70,7 @@ define([
             }
           },
           allowedExtensions: [],
-          templatePathOrMarkup: "uploader/assets/html/uploader.min.html",
+          templatePathOrMarkup: "fineuploader-client-assets/html/uploader.min.html",
           url_prefix: "http://laravel-packages.dev",
           paths: {
             base_directory: 'products'
