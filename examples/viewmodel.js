@@ -5,15 +5,43 @@ define([
   'uploader-requirejs/amd/requirejs-text-loader',
   'uploader-knockout/amd/observable-plugin',
   'uploader-primary-drag/amd/primary-drag',
+  'uploader-knockout/amd/component',
   'require',
   'bootstrap'
-], function(ko, Uploader, engine, loader, koPlugin, dragPlugin, require){
+], function(ko, Uploader, engine, loader, koPlugin, dragPlugin, binding, require){
     var viewmodel = function viewmodel(){
       this.primary = ko.observable(null);
       this.single = ko.observable();
       this.singleInstance = null;
       this.multiple = ko.observableArray();
       this.multipleInstance = null;
+      this.initializer = ko.observable(true);
+
+      ko.bindingHandlers.fineuploader.defaultSettings.loaderResolver = function(){
+        return new loader.RequirejsTextLoader(require);
+      };
+
+      this.bindingTest = {
+        //container: document.getElementById('multiple'),
+        fineUploaderOverrides: {
+          retry: {
+            maxAutoAttempts: 0
+          }
+        },
+        maxFilenameDisplayLength: 5,
+        messages: {
+          completedFile: function(fineUploader, id){
+            return fineUploader.getName(id);
+          }
+        },
+        allowedExtensions: [],
+        templatePathOrMarkup: "fineuploader-client-assets/html/uploader.min.html",
+        url_prefix: "http://laravel-packages.dev",
+        paths: {
+          base_directory: 'products'
+        },
+        plugins: []
+      };
     }
 
     viewmodel.prototype.attached = function attached(){
@@ -26,7 +54,7 @@ define([
       var SingleKnockoutObservable = new koPlugin.KnockoutObservable(this.single);
       var MultipleKnockoutObservable = new koPlugin.KnockoutObservable(this.multiple);
 
-      this.singleInstance = new Uploader.Uploader({
+    /*  this.singleInstance = new Uploader.Uploader({
           container: document.getElementById('single'),
           templatePathOrMarkup: "fineuploader-client-assets/html/uploader.min.html",
           limit: 1,
@@ -56,9 +84,9 @@ define([
           }
       }, KnockoutEngine, RequireJsTextLoader);
 
-      this.single("products/1/q4em1igdhyoftfvhj7xa.jpg");
+      //this.single("products/1/q4em1igdhyoftfvhj7xa.jpg");
 
-      this.singleInstance.initialize();
+      this.singleInstance.initialize();*/
 
       this.multipleInstance = new Uploader.Uploader({
         container: document.getElementById('multiple'),
@@ -91,7 +119,7 @@ define([
 
       //this.multiple.push("products/55a4cb2715e6d.jpg");
       //this.multiple.push("products/55a61bdc83f66.jpg");
-      this.multiple.push("products/1/q4em1igdhyoftfvhj7xa.jpg");
+      //this.multiple.push("products/1/q4em1igdhyoftfvhj7xa.jpg");
 
       this.multipleInstance.initialize();
     }

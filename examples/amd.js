@@ -14,14 +14,17 @@ requirejs.config({
         'durandal':'durandal/js',
         'plugins' : 'durandal/js/plugins',
         'transitions' : 'durandal/js/transitions',
-        'knockout': 'knockout.js/knockout.debug',
-        'jquery': 'jquery/jquery',
+        'knockout': 'knockout/dist/knockout.debug',
+        'jquery': 'jquery/dist/jquery',
         'lodash': 'lodash/lodash',
         'bootstrap': 'bootstrap/dist/js/bootstrap.min'
     },
     shim: {
       'fineuploader': {
         exports: 'qq'
+      },
+      'uploader-knockout/amd/component': {
+        deps: ['knockout']
       }
     }
 });

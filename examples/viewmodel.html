@@ -1,8 +1,10 @@
 <div>
   <h1>Single Uploader</h1>
-  <div id="single"></div>
+  <!--<div id="single"></div>-->
 
   <div data-bind="text: single"></div>
+
+  <fineuploader params="observable: single, initializer: initializer, settings: {limit: 1,paths: {base_directory: 'products'}}"></fineuploader>
 
   <h1>Multiple Uploader</h1>
   <div id="multiple"></div>

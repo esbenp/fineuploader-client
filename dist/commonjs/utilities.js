@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 exports.__esModule = true;
 exports.isElement = isElement;
@@ -10,13 +10,9 @@ exports.guid = guid;
 exports.stringOrFunction = stringOrFunction;
 exports.trimFilename = trimFilename;
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var _lodash = require('lodash');
-
-var _lodash2 = _interopRequireDefault(_lodash);
-
-var _fineuploader = require('fineuploader');
+var _fineuploader = require("fineuploader");
 
 var _fineuploader2 = _interopRequireDefault(_fineuploader);
 
@@ -24,7 +20,7 @@ function isElement(obj) {
   try {
     return obj instanceof HTMLElement;
   } catch (e) {
-    return typeof obj === 'object' && obj.nodeType === 1 && typeof obj.style === 'object' && typeof obj.ownerDocument === 'object';
+    return typeof obj === "object" && obj.nodeType === 1 && typeof obj.style === "object" && typeof obj.ownerDocument === "object";
   }
 }
 
@@ -33,51 +29,51 @@ function isArray(input) {
 }
 
 function isFunction(input) {
-  return typeof input === 'function';
+  return typeof input === "function";
 }
 
 function isString(input) {
-  return typeof input === 'string';
+  return typeof input === "string";
 }
 
 function isUndefined(input) {
-  return typeof input === 'undefined';
+  return typeof input === "undefined";
 }
 
 function guid() {
   function s4() {
     return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
   }
-  return s4() + s4() + '-' + s4() + '-' + s4() + '-' + s4() + '-' + s4() + s4() + s4();
+  return s4() + s4() + "-" + s4() + "-" + s4() + "-" + s4() + "-" + s4() + s4() + s4();
 }
 
 function stringOrFunction(subject) {
   var args = Array.prototype.slice.call(arguments, 1);
 
   if (isString(subject)) {
-    if (subject.match('{}')) {
-      return _fineuploader2['default'].format.apply(_fineuploader2['default'].format, [subject].concat(args));
+    if (subject.match("{}")) {
+      return _fineuploader2["default"].format.apply(_fineuploader2["default"].format, [subject].concat(args));
     } else {
       return subject;
     }
   } else if (isFunction(subject)) {
     return subject.apply(this, args);
   } else {
-    throw Error('Invalid argument.');
+    throw Error("Invalid argument.");
   }
 }
 
 function trimFilename(filename, maxLength) {
-  var ext = filename.substr(filename.lastIndexOf('.') + 1);
-  var basename = filename.substr(0, filename.lastIndexOf('.') - 1);
+  var ext = filename.substr(filename.lastIndexOf(".") + 1);
+  var basename = filename.substr(0, filename.lastIndexOf(".") - 1);
 
   if (isUndefined(maxLength)) {
     maxLength = 20;
   }
 
   if (basename.length > maxLength) {
-    basename = basename.substr(0, maxLength) + '..';
+    basename = basename.substr(0, maxLength) + "..";
   }
 
-  return basename + '.' + ext;
+  return basename + "." + ext;
 }

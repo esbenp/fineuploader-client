@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import qq from 'fineuploader';
 
 // http://stackoverflow.com/a/384380/602488
