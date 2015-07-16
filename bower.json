@@ -1,7 +1,7 @@
 {
-  "name": "uploader",
+  "name": "fineuploader-client",
   "version": "0.1.0",
-  "homepage": "https://github.com/esbenp/es6-library-boilerplate",
+  "homepage": "https://github.com/esbenp/fineuploader-client",
   "main": "index.js",
   "authors": [
     "Esben Petersen <esbenspetersen@gmail.com>"
@@ -16,8 +16,5 @@
   ],
   "dependencies": {
     "fine-uploader": "~5.2.2"
-  },
-  "devDependencies": {
-    "requirejs": "~2.1.16"
   }
 }
