@@ -60,6 +60,18 @@ export class Uploader {
       return plugins;
     }
 
+    // Listen for events here, to let them fire after plugins
+    let events = this.settings.events;
+    for(var type in events) {
+      if (isArray(events[type])) {
+        for(var i in events[type]) {
+          this.listen(type, events[type][i]);
+        }
+      } else {
+        this.listen(type, events[type]);
+      }
+    }
+
     // Is dependent on settings being set first.
     this.fineUploaderSettings = this._generateFineuploaderSettings();
 
@@ -235,17 +247,6 @@ export class Uploader {
 
     if (!isString(combined.paths.base_directory)) {
       return err(`${combined.paths.base_directory} is not a valid base uploader path.`);
-    }
-
-    let events = settings.events;
-    for(var type in events) {
-      if (isArray(events[type])) {
-        for(var i in events[type]) {
-          this.listen(type, events[type][i]);
-        }
-      } else {
-        this.listen(type, events[type]);
-      }
     }
 
     return combined;

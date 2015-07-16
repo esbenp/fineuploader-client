@@ -61,6 +61,17 @@ var Uploader = (function () {
       return plugins;
     }
 
+    var events = this.settings.events;
+    for (var type in events) {
+      if (_utilities.isArray(events[type])) {
+        for (var i in events[type]) {
+          this.listen(type, events[type][i]);
+        }
+      } else {
+        this.listen(type, events[type]);
+      }
+    }
+
     this.fineUploaderSettings = this._generateFineuploaderSettings();
 
     if (this.fineUploaderSettings === false) {
@@ -226,17 +237,6 @@ var Uploader = (function () {
 
     if (!_utilities.isString(combined.paths.base_directory)) {
       return _logging.err(combined.paths.base_directory + ' is not a valid base uploader path.');
-    }
-
-    var events = settings.events;
-    for (var type in events) {
-      if (_utilities.isArray(events[type])) {
-        for (var i in events[type]) {
-          this.listen(type, events[type][i]);
-        }
-      } else {
-        this.listen(type, events[type]);
-      }
     }
 
     return combined;

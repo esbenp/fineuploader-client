@@ -21,6 +21,10 @@ define([
         console.log(instance);
       });
 
+      this.single.subscribe(function(){
+        console.log('new value');
+      });
+
       ko.bindingHandlers.fineuploader.extend({
         loaderResolver: function(){
           return new loader.RequirejsTextLoader(require);
@@ -29,6 +33,7 @@ define([
 
       this.bindingTest = {
         //container: document.getElementById('multiple'),
+        limit: 1,
         fineUploaderOverrides: {
           retry: {
             maxAutoAttempts: 0

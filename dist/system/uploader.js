@@ -77,6 +77,17 @@ System.register(['jquery', './settings', './logging', './utilities', './template
             return plugins;
           }
 
+          var events = this.settings.events;
+          for (var type in events) {
+            if (isArray(events[type])) {
+              for (var i in events[type]) {
+                this.listen(type, events[type][i]);
+              }
+            } else {
+              this.listen(type, events[type]);
+            }
+          }
+
           this.fineUploaderSettings = this._generateFineuploaderSettings();
 
           if (this.fineUploaderSettings === false) {
@@ -242,17 +253,6 @@ System.register(['jquery', './settings', './logging', './utilities', './template
 
           if (!isString(combined.paths.base_directory)) {
             return err(combined.paths.base_directory + ' is not a valid base uploader path.');
-          }
-
-          var events = settings.events;
-          for (var type in events) {
-            if (isArray(events[type])) {
-              for (var i in events[type]) {
-                this.listen(type, events[type][i]);
-              }
-            } else {
-              this.listen(type, events[type]);
-            }
           }
 
           return combined;
