@@ -78,6 +78,9 @@
   text-align: center;
   vertical-align: middle;
 }
+.ou__drop-area input[name=qqfile] {
+  z-index: 100;
+}
 .ou__drop-area.qq-upload-drop-area-active {
   background-color: #f1f1f1;
   border: 3px dashed orange;

@@ -32,7 +32,7 @@ define(['exports', 'jquery', './logging'], function (exports, _jquery, _logging)
     };
 
     TemplateManager.prototype.render = function render(node) {
-      var viewmodel = arguments[1] === undefined ? {} : arguments[1];
+      var viewmodel = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
       return this._engine.render(node, viewmodel);
     };
