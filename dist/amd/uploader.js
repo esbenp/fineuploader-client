@@ -82,14 +82,15 @@ define(['exports', 'jquery', './settings', './logging', './utilities', './templa
 
     Uploader.prototype.fire = function fire(type, index) {
       var args = Array.prototype.slice.call(arguments, 2);
-      this.events[type][index].apply(this, args);
+
+      this.events[type][index].apply(this.events[type][index], args);
     };
 
     Uploader.prototype.fireAll = function fireAll(type) {
       var args = Array.prototype.slice.call(arguments, 1);
       var events = this.events[type];
       for (var i in events) {
-        events[i].apply(this, args);
+        events[i].apply(events[i], args);
       }
     };
 

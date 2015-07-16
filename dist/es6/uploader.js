@@ -98,14 +98,16 @@ export class Uploader {
 
   fire(type, index) {
     var args = Array.prototype.slice.call(arguments, 2);
-    this.events[type][index].apply(this, args);
+    // apply to self to retain the scoped bounded to the function
+    this.events[type][index].apply(this.events[type][index], args);
   }
 
   fireAll(type) {
     var args = Array.prototype.slice.call(arguments, 1);
     var events = this.events[type];
     for (var i in events) {
-      events[i].apply(this, args);
+      // apply to self to retain the scoped bounded to the function
+      events[i].apply(events[i], args);
     }
   }
 
