@@ -10,7 +10,7 @@ var _jquery = require('jquery');
 
 var _jquery2 = _interopRequireDefault(_jquery);
 
-var _logging = require('../logging');
+var _logging = require('./logging');
 
 var TemplateManager = (function () {
   function TemplateManager(engine, loader) {

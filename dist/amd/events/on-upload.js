@@ -13,7 +13,7 @@ define(['exports', 'jquery', '../dom/utilities', '../utilities'], function (expo
 
     var uploadingMessage = _utilities.stringOrFunction(uploader.settings.messages.uploading, uploader.fineuploader, id);
 
-    _domUtilities.fillContainer(container, id, uploadingMessage);
+    _domUtilities.fillContainer(uploader, container, id, uploadingMessage);
 
     uploader.fireAll('onUpload', id, name);
   }

@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {err} from '../logging';
+import {err} from './logging';
 
 export class TemplateManager {
   constructor(engine, loader) {

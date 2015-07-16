@@ -11,7 +11,7 @@ function onSessionRequestComplete(uploader, response, success, xhr) {
 
       var errorMessage = stringOrFunction(uploader.settings.messages.errors[obj.error_code], obj.name);
 
-      fillContainer(container, i, errorMessage);
+      fillContainer(uploader, container, i, errorMessage);
 
       onError.call(uploader.fineuploader, uploader, i, obj.name, errorMessage, xhr);
       toggleFileContainerErrorMode(file_container);
@@ -22,7 +22,7 @@ function onSessionRequestComplete(uploader, response, success, xhr) {
       }
 
       this.setDeleteFileParams({
-        upload_path: response.upload_path
+        upload_path: obj.upload_path
       }, i);
     } else {
       onUpload.call(uploader.fineuploader, uploader, i, obj.name);

@@ -1,7 +1,7 @@
 System.register(['jquery', '../utilities', '../dom/utilities'], function (_export) {
   'use strict';
 
-  var $, stringOrFunction, trimFilename, fillContainer, toggleFileContainerErrorMode, toggleFileContainerSuccessfulFileMode, toggleFileContainerSuccessfulImageMode;
+  var $, stringOrFunction, trimFilename, toggleFileContainerErrorMode, toggleFileContainerSuccessfulFileMode, toggleFileContainerSuccessfulImageMode;
 
   _export('onComplete', onComplete);
 
@@ -48,7 +48,6 @@ System.register(['jquery', '../utilities', '../dom/utilities'], function (_expor
       stringOrFunction = _utilities.stringOrFunction;
       trimFilename = _utilities.trimFilename;
     }, function (_domUtilities) {
-      fillContainer = _domUtilities.fillContainer;
       toggleFileContainerErrorMode = _domUtilities.toggleFileContainerErrorMode;
       toggleFileContainerSuccessfulFileMode = _domUtilities.toggleFileContainerSuccessfulFileMode;
       toggleFileContainerSuccessfulImageMode = _domUtilities.toggleFileContainerSuccessfulImageMode;

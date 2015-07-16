@@ -1,4 +1,4 @@
-System.register(['jquery', '../logging'], function (_export) {
+System.register(['jquery', './logging'], function (_export) {
   'use strict';
 
   var $, err, TemplateManager;

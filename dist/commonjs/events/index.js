@@ -2,6 +2,8 @@
 
 exports.__esModule = true;
 
+var _onAllComplete = require('./on-all-complete');
+
 var _onComplete = require('./on-complete');
 
 var _onDeleteComplete = require('./on-delete-complete');
@@ -20,6 +22,7 @@ var _onSubmitDelete = require('./on-submit-delete');
 
 var _onUpload = require('./on-upload');
 
+exports.onAllComplete = _onAllComplete.onAllComplete;
 exports.onComplete = _onComplete.onComplete;
 exports.onDeleteComplete = _onDeleteComplete.onDeleteComplete;
 exports.onError = _onError.onError;

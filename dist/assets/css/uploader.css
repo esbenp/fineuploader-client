@@ -105,6 +105,7 @@
   margin: 0;
   margin-left: -15px;
   margin-top: 5px;
+  position: relative;
 }
 .ou__files li {
   float: left;
@@ -244,21 +245,4 @@
 .ou--single .ou__files__status-label--ribbon {
   font-size: 12px;
   margin: 0 -10px;
-}
-.ou__files__primary-drag-label {
-  display: none;
-}
-.ou--primary .ou__files__primary-drag-label {
-  color: white;
-  display: block;
-  font-size: 9px;
-  padding: 0 4px;
-  position: absolute;
-  right: -10px;
-  top: 10px;
-  text-transform: uppercase;
-  z-index: 500;
-}
-.ou__uploads li.ou__files__primary-drag-placeholder {
-  border: 3px dashed #cccccc;
 }

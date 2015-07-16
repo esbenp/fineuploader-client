@@ -1,9 +1,11 @@
-System.register(['./on-complete', './on-delete-complete', './on-error', './on-progress', './on-status-change', './on-session-request-complete', './on-submit', './on-submit-delete', './on-upload'], function (_export) {
+System.register(['./on-all-complete', './on-complete', './on-delete-complete', './on-error', './on-progress', './on-status-change', './on-session-request-complete', './on-submit', './on-submit-delete', './on-upload'], function (_export) {
   'use strict';
 
-  var onComplete, onDeleteComplete, onError, onProgress, onStatusChange, onSessionRequestComplete, onSubmit, onSubmitDelete, onUpload;
+  var onAllComplete, onComplete, onDeleteComplete, onError, onProgress, onStatusChange, onSessionRequestComplete, onSubmit, onSubmitDelete, onUpload;
   return {
-    setters: [function (_onComplete) {
+    setters: [function (_onAllComplete) {
+      onAllComplete = _onAllComplete.onAllComplete;
+    }, function (_onComplete) {
       onComplete = _onComplete.onComplete;
     }, function (_onDeleteComplete) {
       onDeleteComplete = _onDeleteComplete.onDeleteComplete;
@@ -23,6 +25,8 @@ System.register(['./on-complete', './on-delete-complete', './on-error', './on-pr
       onUpload = _onUpload.onUpload;
     }],
     execute: function () {
+      _export('onAllComplete', onAllComplete);
+
       _export('onComplete', onComplete);
 
       _export('onDeleteComplete', onDeleteComplete);

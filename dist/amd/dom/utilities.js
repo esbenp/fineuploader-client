@@ -3,6 +3,7 @@ define(['exports', '../dom/constants'], function (exports, _domConstants) {
 
   exports.__esModule = true;
   exports.getContainer = getContainer;
+  exports.getFileList = getFileList;
   exports.fillContainer = fillContainer;
   exports.toggleFileContainerErrorMode = toggleFileContainerErrorMode;
   exports.toggleFileContainerSuccessfulFileMode = toggleFileContainerSuccessfulFileMode;
@@ -12,10 +13,16 @@ define(['exports', '../dom/constants'], function (exports, _domConstants) {
     return $(container).find(_domConstants.CONTAINER_SELECTOR);
   }
 
-  function fillContainer(container, id, message) {
+  function getFileList(container) {
+    return getContainer(container).find(_domConstants.FILE_LIST_SELECTOR);
+  }
+
+  function fillContainer(uploader, container, id, message) {
     container.addClass(_domConstants.SINGLE_FILLED_CLASS);
 
-    container.find(_domConstants.FILE_STATUS_TEXT_SELECTOR).removeClass('qq-hide').text(message);
+    var file_container = $(uploader.fineuploader.getItemByFileId(id));
+
+    file_container.find(_domConstants.FILE_STATUS_TEXT_SELECTOR).removeClass('qq-hide').text(message);
   }
 
   function toggleFileContainerErrorMode(container) {

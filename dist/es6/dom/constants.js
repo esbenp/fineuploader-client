@@ -6,6 +6,7 @@ export const SINGLE_FILLED_CLASS = 'ou--single--filled';
 export const DROP_AREA_SELECTOR = '.qq-upload-drop-area';
 
 // FILES
+export const FILE_LIST_SELECTOR = '.ou__files';
 export const FILE_ICON_SELECTOR = '.ou__files__icon';
 export const FILE_ICON_FILE_CLASS = 'ou__files__icon--file';
 export const FILE_ICON_ERROR_CLASS = 'ou__files__icon--error';

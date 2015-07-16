@@ -1,9 +1,11 @@
 System.register(['../dom/constants'], function (_export) {
   'use strict';
 
-  var CONTAINER_SELECTOR, FILE_ICON_FILE_CLASS, FILE_ICON_ERROR_CLASS, FILE_ICON_SELECTOR, FILE_STATUS_TEXT_RIBBON_CLASS, FILE_STATUS_TEXT_SELECTOR, SINGLE_FILLED_CLASS, SIZE_LABEL_SELECTOR, THUMBNAIL_SELECTOR, THUMBNAIL_ERROR_CLASS, THUMBNAIL_SUCCESS_CLASS, THUMBNAIL_UNFILLED_CLASS;
+  var CONTAINER_SELECTOR, FILE_ICON_FILE_CLASS, FILE_ICON_ERROR_CLASS, FILE_ICON_SELECTOR, FILE_LIST_SELECTOR, FILE_STATUS_TEXT_RIBBON_CLASS, FILE_STATUS_TEXT_SELECTOR, SINGLE_FILLED_CLASS, SIZE_LABEL_SELECTOR, THUMBNAIL_SELECTOR, THUMBNAIL_ERROR_CLASS, THUMBNAIL_SUCCESS_CLASS, THUMBNAIL_UNFILLED_CLASS;
 
   _export('getContainer', getContainer);
+
+  _export('getFileList', getFileList);
 
   _export('fillContainer', fillContainer);
 
@@ -17,10 +19,16 @@ System.register(['../dom/constants'], function (_export) {
     return $(container).find(CONTAINER_SELECTOR);
   }
 
-  function fillContainer(container, id, message) {
+  function getFileList(container) {
+    return getContainer(container).find(FILE_LIST_SELECTOR);
+  }
+
+  function fillContainer(uploader, container, id, message) {
     container.addClass(SINGLE_FILLED_CLASS);
 
-    container.find(FILE_STATUS_TEXT_SELECTOR).removeClass('qq-hide').text(message);
+    var file_container = $(uploader.fineuploader.getItemByFileId(id));
+
+    file_container.find(FILE_STATUS_TEXT_SELECTOR).removeClass('qq-hide').text(message);
   }
 
   function toggleFileContainerErrorMode(container) {
@@ -64,6 +72,7 @@ System.register(['../dom/constants'], function (_export) {
       FILE_ICON_FILE_CLASS = _domConstants.FILE_ICON_FILE_CLASS;
       FILE_ICON_ERROR_CLASS = _domConstants.FILE_ICON_ERROR_CLASS;
       FILE_ICON_SELECTOR = _domConstants.FILE_ICON_SELECTOR;
+      FILE_LIST_SELECTOR = _domConstants.FILE_LIST_SELECTOR;
       FILE_STATUS_TEXT_RIBBON_CLASS = _domConstants.FILE_STATUS_TEXT_RIBBON_CLASS;
       FILE_STATUS_TEXT_SELECTOR = _domConstants.FILE_STATUS_TEXT_SELECTOR;
       SINGLE_FILLED_CLASS = _domConstants.SINGLE_FILLED_CLASS;

@@ -1,3 +1,4 @@
+import {onAllComplete} from './on-all-complete';
 import {onComplete} from './on-complete';
 import {onDeleteComplete} from './on-delete-complete';
 import {onError} from './on-error';
@@ -9,6 +10,7 @@ import {onSubmitDelete} from './on-submit-delete';
 import {onUpload} from './on-upload';
 
 export {
+  onAllComplete,
   onComplete,
   onDeleteComplete,
   onError,

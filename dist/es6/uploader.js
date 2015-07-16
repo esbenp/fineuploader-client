@@ -9,10 +9,11 @@ import {
   isUndefined,
   guid
 } from './utilities';
-import {TemplateManager} from './template/template-manager';
+import {TemplateManager} from './template-manager';
 import {FineUploader} from 'fineuploader';
 import {Session} from './session';
 import {
+  onAllComplete,
   onComplete,
   onDeleteComplete,
   onError,
@@ -74,8 +75,12 @@ export class Uploader {
         self._template.render(node, self.settings);
       }
 
+      self.fireAll('onTemplateRendered');
+
       self._initializeFineUploader(self.settings.container, self.fineUploaderSettings);
       self._initialize = true;
+
+      self.fireAll('onUploaderInitialized');
     });
   }
 
@@ -159,29 +164,39 @@ export class Uploader {
     }
 
     let session = this._session.getSession();
-    if (session === null) {
+    if (session === null || session.length === 0) {
       delete settings.session;
     } else {
+      settings.session.params = this._generateRequestParameters(
+        this.settings,
+        settings,
+        'session'
+      );
       settings.session.params.optimus_uploader_files = this._session.mapSession(session);
     }
 
     settings.validation.itemLimit = this.settings.limit;
 
     settings.callbacks = {
-        onComplete: this._wrapCallback(onComplete),
-        onDeleteComplete: this._wrapCallback(onDeleteComplete),
-        onError: this._wrapCallback(onError),
-        onProgress: this._wrapCallback(onProgress),
-        onStatusChange: this._wrapCallback(onStatusChange),
-        onSessionRequestComplete: this._wrapCallback(onSessionRequestComplete),
-        onSubmit: this._wrapCallback(onSubmit),
-        onSubmitDelete: this._wrapCallback(onSubmitDelete),
-        onUpload: this._wrapCallback(onUpload)
+      onAllComplete: this._wrapCallback(onAllComplete),
+      onComplete: this._wrapCallback(onComplete),
+      onDeleteComplete: this._wrapCallback(onDeleteComplete),
+      onError: this._wrapCallback(onError),
+      onProgress: this._wrapCallback(onProgress),
+      onStatusChange: this._wrapCallback(onStatusChange),
+      onSessionRequestComplete: this._wrapCallback(onSessionRequestComplete),
+      onSubmit: this._wrapCallback(onSubmit),
+      onSubmitDelete: this._wrapCallback(onSubmitDelete),
+      onUpload: this._wrapCallback(onUpload)
     };
 
     $.extend(true, settings, this.settings.fineUploaderOverrides);
 
-    settings.request.params = this._generateRequestParameters(this.settings, settings);
+    settings.request.params = this._generateRequestParameters(
+      this.settings,
+      settings,
+      'request'
+    );
 
     return settings;
   }
@@ -198,13 +213,13 @@ export class Uploader {
     return true;
   }
 
-  _generateRequestParameters(settings, fineUploaderSettings) {
+  _generateRequestParameters(settings, fineUploaderSettings, request_type) {
     return $.extend({}, settings.paths, {
       optimus_uploader_allowed_extensions: fineUploaderSettings.validation.allowedExtensions,
       optimus_uploader_size_limit: fineUploaderSettings.validation.sizeLimit,
       optimus_uploader_thumbnail_height: settings.thumbnails.height,
       optimus_uploader_thumbnail_width: settings.thumbnails.width,
-    }, fineUploaderSettings.request.params || {});
+    }, fineUploaderSettings[request_type].params || {});
   }
 
   _generateSettings(settings) {

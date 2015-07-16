@@ -12,6 +12,8 @@ define(['exports'], function (exports) {
   var DROP_AREA_SELECTOR = '.qq-upload-drop-area';
 
   exports.DROP_AREA_SELECTOR = DROP_AREA_SELECTOR;
+  var FILE_LIST_SELECTOR = '.ou__files';
+  exports.FILE_LIST_SELECTOR = FILE_LIST_SELECTOR;
   var FILE_ICON_SELECTOR = '.ou__files__icon';
   exports.FILE_ICON_SELECTOR = FILE_ICON_SELECTOR;
   var FILE_ICON_FILE_CLASS = 'ou__files__icon--file';

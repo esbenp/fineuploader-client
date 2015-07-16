@@ -1,7 +1,8 @@
-define(['exports', './on-complete', './on-delete-complete', './on-error', './on-progress', './on-status-change', './on-session-request-complete', './on-submit', './on-submit-delete', './on-upload'], function (exports, _onComplete, _onDeleteComplete, _onError, _onProgress, _onStatusChange, _onSessionRequestComplete, _onSubmit, _onSubmitDelete, _onUpload) {
+define(['exports', './on-all-complete', './on-complete', './on-delete-complete', './on-error', './on-progress', './on-status-change', './on-session-request-complete', './on-submit', './on-submit-delete', './on-upload'], function (exports, _onAllComplete, _onComplete, _onDeleteComplete, _onError, _onProgress, _onStatusChange, _onSessionRequestComplete, _onSubmit, _onSubmitDelete, _onUpload) {
   'use strict';
 
   exports.__esModule = true;
+  exports.onAllComplete = _onAllComplete.onAllComplete;
   exports.onComplete = _onComplete.onComplete;
   exports.onDeleteComplete = _onDeleteComplete.onDeleteComplete;
   exports.onError = _onError.onError;

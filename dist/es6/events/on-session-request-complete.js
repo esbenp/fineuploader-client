@@ -28,7 +28,7 @@ export function onSessionRequestComplete(uploader, response, success, xhr)
           obj.name
         );
 
-        fillContainer(container, i, errorMessage);
+        fillContainer(uploader, container, i, errorMessage);
 
         onError.call(uploader.fineuploader, uploader, i, obj.name, errorMessage, xhr);
         toggleFileContainerErrorMode(file_container);
@@ -39,7 +39,7 @@ export function onSessionRequestComplete(uploader, response, success, xhr)
         }
 
         this.setDeleteFileParams({
-          upload_path: response.upload_path
+          upload_path: obj.upload_path
         }, i);
       } else {
         onUpload.call(uploader.fineuploader, uploader, i, obj.name);

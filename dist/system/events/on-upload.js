@@ -10,7 +10,7 @@ System.register(['jquery', '../dom/utilities', '../utilities'], function (_expor
 
     var uploadingMessage = stringOrFunction(uploader.settings.messages.uploading, uploader.fineuploader, id);
 
-    fillContainer(container, id, uploadingMessage);
+    fillContainer(uploader, container, id, uploadingMessage);
 
     uploader.fireAll('onUpload', id, name);
   }

@@ -16,7 +16,7 @@ var _logging = require('./logging');
 
 var _utilities = require('./utilities');
 
-var _templateTemplateManager = require('./template/template-manager');
+var _templateManager = require('./template-manager');
 
 var _fineuploader = require('fineuploader');
 
@@ -41,7 +41,7 @@ var Uploader = (function () {
     }
 
     this._session = new _session.Session(this);
-    this._template = new _templateTemplateManager.TemplateManager(templateEngine, templateLoader);
+    this._template = new _templateManager.TemplateManager(templateEngine, templateLoader);
 
     if (this.settings.initiateOnCreation === true) {
       this.initialize();
@@ -75,8 +75,12 @@ var Uploader = (function () {
         self._template.render(node, self.settings);
       }
 
+      self.fireAll('onTemplateRendered');
+
       self._initializeFineUploader(self.settings.container, self.fineUploaderSettings);
       self._initialize = true;
+
+      self.fireAll('onUploaderInitialized');
     });
   };
 
@@ -159,15 +163,17 @@ var Uploader = (function () {
     }
 
     var session = this._session.getSession();
-    if (session === null) {
+    if (session === null || session.length === 0) {
       delete settings.session;
     } else {
+      settings.session.params = this._generateRequestParameters(this.settings, settings, 'session');
       settings.session.params.optimus_uploader_files = this._session.mapSession(session);
     }
 
     settings.validation.itemLimit = this.settings.limit;
 
     settings.callbacks = {
+      onAllComplete: this._wrapCallback(_eventsIndex.onAllComplete),
       onComplete: this._wrapCallback(_eventsIndex.onComplete),
       onDeleteComplete: this._wrapCallback(_eventsIndex.onDeleteComplete),
       onError: this._wrapCallback(_eventsIndex.onError),
@@ -181,7 +187,7 @@ var Uploader = (function () {
 
     _jquery2['default'].extend(true, settings, this.settings.fineUploaderOverrides);
 
-    settings.request.params = this._generateRequestParameters(this.settings, settings);
+    settings.request.params = this._generateRequestParameters(this.settings, settings, 'request');
 
     return settings;
   };
@@ -198,13 +204,13 @@ var Uploader = (function () {
     return true;
   };
 
-  Uploader.prototype._generateRequestParameters = function _generateRequestParameters(settings, fineUploaderSettings) {
+  Uploader.prototype._generateRequestParameters = function _generateRequestParameters(settings, fineUploaderSettings, request_type) {
     return _jquery2['default'].extend({}, settings.paths, {
       optimus_uploader_allowed_extensions: fineUploaderSettings.validation.allowedExtensions,
       optimus_uploader_size_limit: fineUploaderSettings.validation.sizeLimit,
       optimus_uploader_thumbnail_height: settings.thumbnails.height,
       optimus_uploader_thumbnail_width: settings.thumbnails.width
-    }, fineUploaderSettings.request.params || {});
+    }, fineUploaderSettings[request_type].params || {});
   };
 
   Uploader.prototype._generateSettings = function _generateSettings(settings) {

@@ -30,7 +30,7 @@ function onSessionRequestComplete(uploader, response, success, xhr) {
 
       var errorMessage = _utilities.stringOrFunction(uploader.settings.messages.errors[obj.error_code], obj.name);
 
-      _domUtilities.fillContainer(container, i, errorMessage);
+      _domUtilities.fillContainer(uploader, container, i, errorMessage);
 
       _onError.onError.call(uploader.fineuploader, uploader, i, obj.name, errorMessage, xhr);
       _domUtilities.toggleFileContainerErrorMode(file_container);
@@ -41,7 +41,7 @@ function onSessionRequestComplete(uploader, response, success, xhr) {
       }
 
       this.setDeleteFileParams({
-        upload_path: response.upload_path
+        upload_path: obj.upload_path
       }, i);
     } else {
       _onUpload.onUpload.call(uploader.fineuploader, uploader, i, obj.name);

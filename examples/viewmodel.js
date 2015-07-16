@@ -1,14 +1,15 @@
 define([
   'knockout',
   'fineuploader-client/index',
-  'uploader-knockout/amd/template/knockout-engine',
+  'uploader-knockout/amd/template-engine',
   'uploader-requirejs/amd/requirejs-text-loader',
-  'uploader-knockout/amd/plugins/knockout-observable',
-  'uploader-primary-drag/amd/plugins/primary-drag',
+  'uploader-knockout/amd/observable-plugin',
+  'uploader-primary-drag/amd/primary-drag',
   'require',
   'bootstrap'
 ], function(ko, Uploader, engine, loader, koPlugin, dragPlugin, require){
     var viewmodel = function viewmodel(){
+      this.primary = ko.observable(null);
       this.single = ko.observable();
       this.singleInstance = null;
       this.multiple = ko.observableArray();
@@ -16,9 +17,12 @@ define([
     }
 
     viewmodel.prototype.attached = function attached(){
+      var self = this;
       var KnockoutEngine = new engine.KnockoutEngine(ko);
       var RequireJsTextLoader = new loader.RequirejsTextLoader(require);
-      var PrimaryDrag = new dragPlugin.PrimaryDrag();
+      var PrimaryDrag = new dragPlugin.PrimaryDrag(function(id, name, upload_path){
+        self.primary(upload_path);
+      });
       var SingleKnockoutObservable = new koPlugin.KnockoutObservable(this.single);
       var MultipleKnockoutObservable = new koPlugin.KnockoutObservable(this.multiple);
 
@@ -52,7 +56,7 @@ define([
           }
       }, KnockoutEngine, RequireJsTextLoader);
 
-      this.single("products/55a4cb2715e6d.jpg");
+      this.single("products/1/q4em1igdhyoftfvhj7xa.jpg");
 
       this.singleInstance.initialize();
 
@@ -85,7 +89,9 @@ define([
           ]
       }, KnockoutEngine, RequireJsTextLoader);
 
-      this.multiple.push("products/55a4cb2715e6d.jpg");
+      //this.multiple.push("products/55a4cb2715e6d.jpg");
+      //this.multiple.push("products/55a61bdc83f66.jpg");
+      this.multiple.push("products/1/q4em1igdhyoftfvhj7xa.jpg");
 
       this.multipleInstance.initialize();
     }

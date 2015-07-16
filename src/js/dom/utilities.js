@@ -3,6 +3,7 @@ import {
   FILE_ICON_FILE_CLASS,
   FILE_ICON_ERROR_CLASS,
   FILE_ICON_SELECTOR,
+  FILE_LIST_SELECTOR,
   FILE_STATUS_TEXT_RIBBON_CLASS,
   FILE_STATUS_TEXT_SELECTOR,
   SINGLE_FILLED_CLASS,
@@ -19,11 +20,18 @@ export function getContainer(container)
   return $(container).find(CONTAINER_SELECTOR);
 }
 
-export function fillContainer(container, id, message)
+export function getFileList(container)
+{
+  return getContainer(container).find(FILE_LIST_SELECTOR);
+}
+
+export function fillContainer(uploader, container, id, message)
 {
   container.addClass(SINGLE_FILLED_CLASS);
 
-  container.find(FILE_STATUS_TEXT_SELECTOR)
+  var file_container = $(uploader.fineuploader.getItemByFileId(id));
+
+  file_container.find(FILE_STATUS_TEXT_SELECTOR)
     .removeClass('qq-hide')
     .text(message);
 }

@@ -14,7 +14,7 @@ export function onUpload(uploader, id, name) {
                       id
                     );
 
-  fillContainer(container, id, uploadingMessage);
+  fillContainer(uploader, container, id, uploadingMessage);
 
   uploader.fireAll('onUpload', id, name);
 }

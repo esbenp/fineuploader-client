@@ -4,7 +4,6 @@ import {
   trimFilename
 } from '../utilities';
 import {
-  fillContainer,
   toggleFileContainerErrorMode,
   toggleFileContainerSuccessfulFileMode,
   toggleFileContainerSuccessfulImageMode

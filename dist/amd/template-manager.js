@@ -1,4 +1,4 @@
-define(['exports', 'jquery', '../logging'], function (exports, _jquery, _logging) {
+define(['exports', 'jquery', './logging'], function (exports, _jquery, _logging) {
   'use strict';
 
   exports.__esModule = true;

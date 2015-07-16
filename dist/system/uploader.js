@@ -1,7 +1,7 @@
-System.register(['jquery', './settings', './logging', './utilities', './template/template-manager', 'fineuploader', './session', './events/index'], function (_export) {
+System.register(['jquery', './settings', './logging', './utilities', './template-manager', 'fineuploader', './session', './events/index'], function (_export) {
   'use strict';
 
-  var $, defaults, fineuploader_defaults, debug, err, isArray, isElement, isString, isFunction, isUndefined, guid, TemplateManager, FineUploader, Session, onComplete, onDeleteComplete, onError, onProgress, onStatusChange, onSessionRequestComplete, onSubmit, onSubmitDelete, onUpload, Uploader;
+  var $, defaults, fineuploader_defaults, debug, err, isArray, isElement, isString, isFunction, isUndefined, guid, TemplateManager, FineUploader, Session, onAllComplete, onComplete, onDeleteComplete, onError, onProgress, onStatusChange, onSessionRequestComplete, onSubmit, onSubmitDelete, onUpload, Uploader;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -21,13 +21,14 @@ System.register(['jquery', './settings', './logging', './utilities', './template
       isFunction = _utilities.isFunction;
       isUndefined = _utilities.isUndefined;
       guid = _utilities.guid;
-    }, function (_templateTemplateManager) {
-      TemplateManager = _templateTemplateManager.TemplateManager;
+    }, function (_templateManager) {
+      TemplateManager = _templateManager.TemplateManager;
     }, function (_fineuploader) {
       FineUploader = _fineuploader.FineUploader;
     }, function (_session) {
       Session = _session.Session;
     }, function (_eventsIndex) {
+      onAllComplete = _eventsIndex.onAllComplete;
       onComplete = _eventsIndex.onComplete;
       onDeleteComplete = _eventsIndex.onDeleteComplete;
       onError = _eventsIndex.onError;
@@ -90,8 +91,12 @@ System.register(['jquery', './settings', './logging', './utilities', './template
               self._template.render(node, self.settings);
             }
 
+            self.fireAll('onTemplateRendered');
+
             self._initializeFineUploader(self.settings.container, self.fineUploaderSettings);
             self._initialize = true;
+
+            self.fireAll('onUploaderInitialized');
           });
         };
 
@@ -174,15 +179,17 @@ System.register(['jquery', './settings', './logging', './utilities', './template
           }
 
           var session = this._session.getSession();
-          if (session === null) {
+          if (session === null || session.length === 0) {
             delete settings.session;
           } else {
+            settings.session.params = this._generateRequestParameters(this.settings, settings, 'session');
             settings.session.params.optimus_uploader_files = this._session.mapSession(session);
           }
 
           settings.validation.itemLimit = this.settings.limit;
 
           settings.callbacks = {
+            onAllComplete: this._wrapCallback(onAllComplete),
             onComplete: this._wrapCallback(onComplete),
             onDeleteComplete: this._wrapCallback(onDeleteComplete),
             onError: this._wrapCallback(onError),
@@ -196,7 +203,7 @@ System.register(['jquery', './settings', './logging', './utilities', './template
 
           $.extend(true, settings, this.settings.fineUploaderOverrides);
 
-          settings.request.params = this._generateRequestParameters(this.settings, settings);
+          settings.request.params = this._generateRequestParameters(this.settings, settings, 'request');
 
           return settings;
         };
@@ -213,13 +220,13 @@ System.register(['jquery', './settings', './logging', './utilities', './template
           return true;
         };
 
-        Uploader.prototype._generateRequestParameters = function _generateRequestParameters(settings, fineUploaderSettings) {
+        Uploader.prototype._generateRequestParameters = function _generateRequestParameters(settings, fineUploaderSettings, request_type) {
           return $.extend({}, settings.paths, {
             optimus_uploader_allowed_extensions: fineUploaderSettings.validation.allowedExtensions,
             optimus_uploader_size_limit: fineUploaderSettings.validation.sizeLimit,
             optimus_uploader_thumbnail_height: settings.thumbnails.height,
             optimus_uploader_thumbnail_width: settings.thumbnails.width
-          }, fineUploaderSettings.request.params || {});
+          }, fineUploaderSettings[request_type].params || {});
         };
 
         Uploader.prototype._generateSettings = function _generateSettings(settings) {

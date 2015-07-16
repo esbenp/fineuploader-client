@@ -6,6 +6,7 @@ var SINGLE_FILLED_CLASS = 'ou--single--filled';
 
 var DROP_AREA_SELECTOR = '.qq-upload-drop-area';
 
+var FILE_LIST_SELECTOR = '.ou__files';
 var FILE_ICON_SELECTOR = '.ou__files__icon';
 var FILE_ICON_FILE_CLASS = 'ou__files__icon--file';
 var FILE_ICON_ERROR_CLASS = 'ou__files__icon--error';
