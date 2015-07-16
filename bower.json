@@ -1,6 +1,6 @@
 {
   "name": "fineuploader-client",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "homepage": "https://github.com/esbenp/fineuploader-client",
   "main": "index.js",
   "authors": [
