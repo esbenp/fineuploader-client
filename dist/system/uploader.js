@@ -244,6 +244,17 @@ System.register(['jquery', './settings', './logging', './utilities', './template
             return err(combined.paths.base_directory + ' is not a valid base uploader path.');
           }
 
+          var events = settings.events;
+          for (var type in events) {
+            if (isArray(events[type])) {
+              for (var i in events[type]) {
+                this.listen(type, events[type][i]);
+              }
+            } else {
+              this.listen(type, events[type]);
+            }
+          }
+
           return combined;
         };
 

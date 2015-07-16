@@ -228,6 +228,17 @@ var Uploader = (function () {
       return _logging.err(combined.paths.base_directory + ' is not a valid base uploader path.');
     }
 
+    var events = settings.events;
+    for (var type in events) {
+      if (_utilities.isArray(events[type])) {
+        for (var i in events[type]) {
+          this.listen(type, events[type][i]);
+        }
+      } else {
+        this.listen(type, events[type]);
+      }
+    }
+
     return combined;
   };
 

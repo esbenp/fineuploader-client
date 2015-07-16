@@ -7,6 +7,7 @@ export var defaults = {
   container: null,
   deleteCheck: null,
   errorHandler: defaultErrorHandler,
+  events: {},
   fineUploaderOverrides: {},
   initiateOnCreation: false,
   limit: 0,

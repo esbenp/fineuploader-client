@@ -46,7 +46,18 @@ define([
         paths: {
           base_directory: 'products'
         },
-        plugins: []
+        plugins: [],
+        events: {
+          onComplete: [
+            function() {
+              console.log(1);
+            },
+            function() {
+              console.log(2);
+            }
+          ],
+          onUpload: function(){console.log(3);}
+        }
       };
     }
 

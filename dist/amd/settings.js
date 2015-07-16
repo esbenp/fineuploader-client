@@ -9,6 +9,7 @@ define(['exports', './error-handling'], function (exports, _errorHandling) {
     container: null,
     deleteCheck: null,
     errorHandler: _errorHandling.defaultErrorHandler,
+    events: {},
     fineUploaderOverrides: {},
     initiateOnCreation: false,
     limit: 0,

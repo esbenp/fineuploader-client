@@ -11,6 +11,7 @@ var defaults = {
   container: null,
   deleteCheck: null,
   errorHandler: _errorHandling.defaultErrorHandler,
+  events: {},
   fineUploaderOverrides: {},
   initiateOnCreation: false,
   limit: 0,

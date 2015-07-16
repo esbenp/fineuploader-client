@@ -14,6 +14,7 @@ System.register(['./error-handling'], function (_export) {
         container: null,
         deleteCheck: null,
         errorHandler: defaultErrorHandler,
+        events: {},
         fineUploaderOverrides: {},
         initiateOnCreation: false,
         limit: 0,
