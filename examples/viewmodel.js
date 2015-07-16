@@ -15,11 +15,17 @@ define([
       this.singleInstance = null;
       this.multiple = ko.observableArray();
       this.multipleInstance = null;
-      this.initializer = ko.observable(true);
+      this.initializer = ko.observable(false);
+      this.instance = ko.observable();
+      this.instance.subscribe(function(instance){
+        console.log(instance);
+      });
 
-      ko.bindingHandlers.fineuploader.defaultSettings.loaderResolver = function(){
-        return new loader.RequirejsTextLoader(require);
-      };
+      ko.bindingHandlers.fineuploader.extend({
+        loaderResolver: function(){
+          return new loader.RequirejsTextLoader(require);
+        }
+      });
 
       this.bindingTest = {
         //container: document.getElementById('multiple'),
@@ -53,6 +59,11 @@ define([
       });
       var SingleKnockoutObservable = new koPlugin.KnockoutObservable(this.single);
       var MultipleKnockoutObservable = new koPlugin.KnockoutObservable(this.multiple);
+
+      setTimeout(function(){
+        self.bindingTest.paths.sub_directory = "YOOO";
+        self.initializer(true);
+      }, 4000);
 
     /*  this.singleInstance = new Uploader.Uploader({
           container: document.getElementById('single'),

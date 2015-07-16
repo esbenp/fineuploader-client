@@ -1,6 +1,8 @@
 System.register([], function (_export) {
   'use strict';
 
+  var __DEBUG__;
+
   _export('debug', debug);
 
   _export('err', err);
@@ -27,6 +29,8 @@ System.register([], function (_export) {
   return {
     setters: [],
     execute: function () {
+      __DEBUG__ = __DEBUG__ || false;
+
       (function (global) {
         'use strict';
         global.console = global.console || {};

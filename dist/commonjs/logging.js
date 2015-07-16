@@ -4,6 +4,7 @@ exports.__esModule = true;
 exports.debug = debug;
 exports.err = err;
 
+var __DEBUG__ = __DEBUG__ || false;
 (function (global) {
   'use strict';
   global.console = global.console || {};

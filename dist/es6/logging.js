@@ -1,6 +1,7 @@
 // Console-polyfill. MIT license.
 // https://github.com/paulmillr/console-polyfill
 // Make it safe to do console.log() always.
+var __DEBUG__ = __DEBUG__ || false;
 (function(global) {
   'use strict';
   global.console = global.console || {};
