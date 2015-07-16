@@ -9,10 +9,12 @@ define(['exports', 'jquery', '../dom/constants', '../dom/utilities'], function (
   var _$ = _interopRequireDefault(_jquery);
 
   function onDeleteComplete(uploader, id, xhr, isError) {
+    var response = _$['default'].parseJSON(xhr.responseText);
+
     var container = _domUtilities.getContainer(uploader.settings.container);
 
     container.removeClass(_domConstants.SINGLE_FILLED_CLASS);
 
-    uploader.fireAll('onDeleteComplete', id, xhr, isError);
+    uploader.fireAll('onDeleteComplete', id, xhr, isError, response.deleted[0]);
   }
 });

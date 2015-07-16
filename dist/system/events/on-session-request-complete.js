@@ -31,7 +31,7 @@ System.register(['jquery', '../dom/utilities', '../utilities', './on-complete', 
         }, i);
       } else {
         onUpload.call(uploader.fineuploader, uploader, i, obj.name);
-        onComplete.call(uploader.fineuploader, uploader, i, obj.name, obj, xhr);
+        onComplete.call(uploader.fineuploader, uploader, i, obj.name, obj, xhr, obj.upload_path);
       }
     }
   }

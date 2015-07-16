@@ -61,5 +61,5 @@ export function onComplete(uploader, id, name, responseJSON, xhr)
       break;
   }
 
-  uploader.fireAll('onComplete', id, name, responseJSON, xhr);
+  uploader.fireAll('onComplete', id, name, responseJSON, xhr, upload_path);
 }

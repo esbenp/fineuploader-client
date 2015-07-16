@@ -41,6 +41,6 @@ define(['exports', 'jquery', '../utilities', '../dom/utilities'], function (expo
         break;
     }
 
-    uploader.fireAll('onComplete', id, name, responseJSON, xhr);
+    uploader.fireAll('onComplete', id, name, responseJSON, xhr, upload_path);
   }
 });

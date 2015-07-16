@@ -34,7 +34,7 @@ define(['exports', 'jquery', '../dom/utilities', '../utilities', './on-complete'
         }, i);
       } else {
         _onUpload.onUpload.call(uploader.fineuploader, uploader, i, obj.name);
-        _onComplete.onComplete.call(uploader.fineuploader, uploader, i, obj.name, obj, xhr);
+        _onComplete.onComplete.call(uploader.fineuploader, uploader, i, obj.name, obj, xhr, obj.upload_path);
       }
     }
   }

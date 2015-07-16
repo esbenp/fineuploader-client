@@ -38,7 +38,7 @@ System.register(['jquery', '../utilities', '../dom/utilities'], function (_expor
         break;
     }
 
-    uploader.fireAll('onComplete', id, name, responseJSON, xhr);
+    uploader.fireAll('onComplete', id, name, responseJSON, xhr, upload_path);
   }
 
   return {
