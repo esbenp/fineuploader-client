@@ -42,6 +42,7 @@ var defaults = {
   },
   thumbnails: {
     height: 100,
+    overrideCss: true,
     width: 100
   },
   url_prefix: false

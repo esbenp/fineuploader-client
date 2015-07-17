@@ -1,4 +1,4 @@
-define(['exports', 'jquery', './settings', './logging', './utilities', './template-manager', 'fineuploader', './session', './events/index'], function (exports, _jquery, _settings, _logging, _utilities, _templateManager, _fineuploader, _session, _eventsIndex) {
+define(['exports', 'jquery', './settings', './logging', './utilities', './dom/utilities', './template-manager', 'fineuploader', './session', './events/index'], function (exports, _jquery, _settings, _logging, _utilities, _domUtilities, _templateManager, _fineuploader, _session, _eventsIndex) {
   'use strict';
 
   exports.__esModule = true;
@@ -66,6 +66,14 @@ define(['exports', 'jquery', './settings', './logging', './utilities', './templa
       _$['default'].when(templateMarkupPromise).then(function (markup) {
         var node = self._template.appendMarkupToContainer(markup, self.settings.container);
         node.id = self.uploaderId;
+
+        if (self.settings.thumbnails.overrideCss) {
+          var container = _domUtilities.getContainer(_$['default'](node));
+          container.css({
+            height: self.settings.thumbnails.height,
+            width: self.settings.thumbnails.width
+          });
+        }
 
         if (node !== false) {
           self._template.render(node, self.settings);

@@ -60,6 +60,14 @@ var Uploader = (function () {
       var node = self._template.appendMarkupToContainer(markup, self.settings.container);
       node.id = self.uploaderId;
 
+      if (self.settings.thumbnails.overrideCss) {
+        var container = getContainer($(node));
+        container.css({
+          height: self.settings.thumbnails.height,
+          width: self.settings.thumbnails.width
+        });
+      }
+
       if (node !== false) {
         self._template.render(node, self.settings);
       }

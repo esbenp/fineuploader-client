@@ -16,6 +16,8 @@ var _logging = require('./logging');
 
 var _utilities = require('./utilities');
 
+var _domUtilities = require('./dom/utilities');
+
 var _templateManager = require('./template-manager');
 
 var _fineuploader = require('fineuploader');
@@ -81,6 +83,14 @@ var Uploader = (function () {
     _jquery2['default'].when(templateMarkupPromise).then(function (markup) {
       var node = self._template.appendMarkupToContainer(markup, self.settings.container);
       node.id = self.uploaderId;
+
+      if (self.settings.thumbnails.overrideCss) {
+        var container = _domUtilities.getContainer(_jquery2['default'](node));
+        container.css({
+          height: self.settings.thumbnails.height,
+          width: self.settings.thumbnails.width
+        });
+      }
 
       if (node !== false) {
         self._template.render(node, self.settings);

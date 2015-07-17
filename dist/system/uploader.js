@@ -1,7 +1,7 @@
-System.register(['jquery', './settings', './logging', './utilities', './template-manager', 'fineuploader', './session', './events/index'], function (_export) {
+System.register(['jquery', './settings', './logging', './utilities', './dom/utilities', './template-manager', 'fineuploader', './session', './events/index'], function (_export) {
   'use strict';
 
-  var $, defaults, fineuploader_defaults, debug, err, isArray, isElement, isString, isFunction, isUndefined, guid, TemplateManager, FineUploader, Session, onAllComplete, onComplete, onDeleteComplete, onError, onProgress, onStatusChange, onSessionRequestComplete, onSubmit, onSubmitDelete, onUpload, Uploader;
+  var $, defaults, fineuploader_defaults, debug, err, isArray, isElement, isString, isFunction, isUndefined, guid, getContainer, TemplateManager, FineUploader, Session, onAllComplete, onComplete, onDeleteComplete, onError, onProgress, onStatusChange, onSessionRequestComplete, onSubmit, onSubmitDelete, onUpload, Uploader;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
@@ -21,6 +21,8 @@ System.register(['jquery', './settings', './logging', './utilities', './template
       isFunction = _utilities.isFunction;
       isUndefined = _utilities.isUndefined;
       guid = _utilities.guid;
+    }, function (_domUtilities) {
+      getContainer = _domUtilities.getContainer;
     }, function (_templateManager) {
       TemplateManager = _templateManager.TemplateManager;
     }, function (_fineuploader) {
@@ -97,6 +99,14 @@ System.register(['jquery', './settings', './logging', './utilities', './template
           $.when(templateMarkupPromise).then(function (markup) {
             var node = self._template.appendMarkupToContainer(markup, self.settings.container);
             node.id = self.uploaderId;
+
+            if (self.settings.thumbnails.overrideCss) {
+              var container = getContainer($(node));
+              container.css({
+                height: self.settings.thumbnails.height,
+                width: self.settings.thumbnails.width
+              });
+            }
 
             if (node !== false) {
               self._template.render(node, self.settings);

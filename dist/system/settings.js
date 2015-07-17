@@ -45,6 +45,7 @@ System.register(['./error-handling'], function (_export) {
         },
         thumbnails: {
           height: 100,
+          overrideCss: true,
           width: 100
         },
         url_prefix: false
