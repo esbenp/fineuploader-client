@@ -16,6 +16,10 @@ function isFunction(input) {
   return typeof input === "function";
 }
 
+function isObject(input) {
+  return typeof input === "object";
+}
+
 function isString(input) {
   return typeof input === "string";
 }

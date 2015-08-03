@@ -5,6 +5,7 @@ define(["exports", "fineuploader"], function (exports, _fineuploader) {
   exports.isElement = isElement;
   exports.isArray = isArray;
   exports.isFunction = isFunction;
+  exports.isObject = isObject;
   exports.isString = isString;
   exports.isUndefined = isUndefined;
   exports.guid = guid;
@@ -29,6 +30,10 @@ define(["exports", "fineuploader"], function (exports, _fineuploader) {
 
   function isFunction(input) {
     return typeof input === "function";
+  }
+
+  function isObject(input) {
+    return typeof input === "object";
   }
 
   function isString(input) {

@@ -24,6 +24,10 @@ export function isFunction(input) {
   return typeof input === 'function';
 }
 
+export function isObject(input) {
+  return typeof input === 'object';
+}
+
 export function isString(input) {
   return typeof input === 'string';
 }

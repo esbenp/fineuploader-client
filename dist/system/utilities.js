@@ -9,6 +9,8 @@ System.register(["fineuploader"], function (_export) {
 
   _export("isFunction", isFunction);
 
+  _export("isObject", isObject);
+
   _export("isString", isString);
 
   _export("isUndefined", isUndefined);
@@ -33,6 +35,10 @@ System.register(["fineuploader"], function (_export) {
 
   function isFunction(input) {
     return typeof input === "function";
+  }
+
+  function isObject(input) {
+    return typeof input === "object";
   }
 
   function isString(input) {
