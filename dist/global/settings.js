@@ -26,7 +26,7 @@ var defaults = {
     base_directory: null,
     sub_directory: null
   },
-  plugins: [],
+  plugins: {},
   session: null,
   sessionErrorHandler: null,
   sizeLimit: null,

@@ -120,6 +120,10 @@ export class Uploader {
     }
   }
 
+  getPlugin(key) {
+    return this.settings.plugins[key];
+  }
+
   isInitialized() {
     return this._initialized;
   }

@@ -102,6 +102,10 @@ define(['exports', 'jquery', './settings', './logging', './utilities', './dom/ut
       }
     };
 
+    Uploader.prototype.getPlugin = function getPlugin(key) {
+      return this.settings.plugins[key];
+    };
+
     Uploader.prototype.isInitialized = function isInitialized() {
       return this._initialized;
     };

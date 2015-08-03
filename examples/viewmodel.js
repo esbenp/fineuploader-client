@@ -77,10 +77,10 @@ define([
       var SingleKnockoutObservable = new koPlugin.KnockoutObservable(this.single);
       var MultipleKnockoutObservable = new koPlugin.KnockoutObservable(this.multiple);
 
-      setTimeout(function(){
+      //setTimeout(function(){
         self.bindingTest.paths.sub_directory = "YOOO";
         self.initializer(true);
-      }, 4000);
+      //}, 4000);
 
     /*  this.singleInstance = new Uploader.Uploader({
           container: document.getElementById('single'),
@@ -139,10 +139,10 @@ define([
             "products/55a36a5d4bc63.jpg",
             "products/55a363a07352e.jpg"
           ],
-          plugins: [
-            MultipleKnockoutObservable,
-            PrimaryDrag
-          ]
+          plugins: {
+            'ko': MultipleKnockoutObservable,
+            'drag': PrimaryDrag
+          }
       }, KnockoutEngine, RequireJsTextLoader);
 
       //this.multiple.push("products/55a4cb2715e6d.jpg");
@@ -150,6 +150,8 @@ define([
       //this.multiple.push("products/1/q4em1igdhyoftfvhj7xa.jpg");
 
       this.multipleInstance.initialize();
+
+      console.log(this.multipleInstance.getPlugin('ko'));
     }
 
     return viewmodel;
