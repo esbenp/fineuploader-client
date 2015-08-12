@@ -39,6 +39,7 @@ define(['exports', './error-handling'], function (exports, _errorHandling) {
       dropLabel: 'Drop Files Here to Upload'
     },
     thumbnails: {
+      crop: 'fill',
       height: 100,
       overrideCss: true,
       width: 100

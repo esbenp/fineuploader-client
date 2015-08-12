@@ -44,6 +44,7 @@ System.register(['./error-handling'], function (_export) {
           dropLabel: 'Drop Files Here to Upload'
         },
         thumbnails: {
+          crop: 'fill',
           height: 100,
           overrideCss: true,
           width: 100
