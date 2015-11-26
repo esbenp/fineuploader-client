@@ -14,6 +14,10 @@ var _utilities = require('../utilities');
 var _domUtilities = require('../dom/utilities');
 
 function onComplete(uploader, id, name, responseJSON, xhr) {
+  if (responseJSON.chunk === true) {
+    return true;
+  }
+
   var file_container = _jquery2['default'](uploader.fineuploader.getItemByFileId(id));
 
   switch (xhr.status) {

@@ -62,8 +62,7 @@ define([
             }
           ],
           onUpload: function(){console.log(3);}
-        },
-        'session': "asdasda/asdasda/dasdas.jpg"
+        }
       };
     }
 

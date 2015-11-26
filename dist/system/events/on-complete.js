@@ -6,6 +6,10 @@ System.register(['jquery', '../utilities', '../dom/utilities'], function (_expor
   _export('onComplete', onComplete);
 
   function onComplete(uploader, id, name, responseJSON, xhr) {
+    if (responseJSON.chunk === true) {
+      return true;
+    }
+
     var file_container = $(uploader.fineuploader.getItemByFileId(id));
 
     switch (xhr.status) {

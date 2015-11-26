@@ -72,7 +72,7 @@
 .ou__drop-area {
   background: transparent;
   display: table-cell;
-  border: 3px dashed #cccccc;
+  border: 3px dashed #ccc;
   position: relative;
   padding: 20px;
   text-align: center;
@@ -184,13 +184,13 @@
   background-size: contain;
 }
 .ou__files__thumbnail--unfilled {
-  border: 2px dashed #d3c2a3;
+  border: 2px dashed #D3C2A3;
 }
 .ou__files__thumbnail--success {
-  border: 2px dashed #a6cfc3;
+  border: 2px dashed #A6CFC3;
 }
 .ou__files__thumbnail--error {
-  border: 2px dashed #fcb9b9;
+  border: 2px dashed #FCB9B9;
 }
 /**
  * STYLES FOR SINGLE UPLOADER

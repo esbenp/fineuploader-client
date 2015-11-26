@@ -8,6 +8,7 @@ requirejs.config({
         'uploader-requirejs': 'fineuploader-client-requirejs/dist',
         'uploader-knockout': 'fineuploader-client-knockout/dist',
         'uploader-primary-drag': 'fineuploader-client-primary-drag/dist',
+        'jquery-ui': 'jquery-ui/ui',
 
         'fineuploader': 'fine-uploader/_build/fine-uploader',
         'text': 'requirejs-text/text',

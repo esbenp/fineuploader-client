@@ -9,6 +9,10 @@ define(['exports', 'jquery', '../utilities', '../dom/utilities'], function (expo
   var _$ = _interopRequireDefault(_jquery);
 
   function onComplete(uploader, id, name, responseJSON, xhr) {
+    if (responseJSON.chunk === true) {
+      return true;
+    }
+
     var file_container = _$['default'](uploader.fineuploader.getItemByFileId(id));
 
     switch (xhr.status) {
