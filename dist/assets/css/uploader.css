@@ -71,7 +71,10 @@
  */
 .ou__drop-area {
   background: transparent;
-  display: table-cell;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
   border: 3px dashed #ccc;
   position: relative;
   padding: 20px;
