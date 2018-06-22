@@ -72,7 +72,7 @@
 .ou__drop-area {
   background: transparent;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
   height: 100%;
   border: 3px dashed #ccc;
@@ -83,6 +83,9 @@
 }
 .ou__drop-area input[name=qqfile] {
   z-index: 100;
+}
+.ou--single .ou__drop-area {
+  align-items: center;
 }
 .ou__drop-area.qq-upload-drop-area-active {
   background-color: #f1f1f1;
