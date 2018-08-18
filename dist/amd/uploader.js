@@ -39,7 +39,6 @@ define(['exports', 'jquery', './settings', './logging', './utilities', './dom/ut
       _logging.debug('Initializing', this.settings);
 
       var self = this;
-      var templateMarkupPromise = this._template.load(this.settings.templatePathOrMarkup);
 
       var plugins = this._initializePlugins();
       if (!plugins) {
@@ -63,29 +62,15 @@ define(['exports', 'jquery', './settings', './logging', './utilities', './dom/ut
         return _logging.err('Fineuploader settings were not generated correctly.');
       }
 
-      _$['default'].when(templateMarkupPromise).then(function (markup) {
-        var node = self._template.appendMarkupToContainer(markup, self.settings.container);
-        node.id = self.uploaderId;
+      var node = self.settings.container;
+      node.id = self.uploaderId;
 
-        if (self.settings.thumbnails.overrideCss) {
-          var container = _domUtilities.getContainer(_$['default'](node));
-          container.css({
-            height: self.settings.thumbnails.height,
-            width: self.settings.thumbnails.width
-          });
-        }
+      self.fireAll('onTemplateRendered');
 
-        if (node !== false) {
-          self._template.render(node, self.settings);
-        }
+      self._initializeFineUploader(self.settings.container, self.fineUploaderSettings);
+      self._initialize = true;
 
-        self.fireAll('onTemplateRendered');
-
-        self._initializeFineUploader(self.settings.container, self.fineUploaderSettings);
-        self._initialize = true;
-
-        self.fireAll('onUploaderInitialized');
-      });
+      self.fireAll('onUploaderInitialized');
     };
 
     Uploader.prototype.fire = function fire(type, index) {

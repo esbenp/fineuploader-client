@@ -54,7 +54,7 @@ export class Uploader {
     debug('Initializing', this.settings);
 
     let self = this;
-    let templateMarkupPromise = this._template.load(this.settings.templatePathOrMarkup);
+    //let templateMarkupPromise = this._template.load(this.settings.templatePathOrMarkup);
 
     let plugins = this._initializePlugins();
     if (!plugins) {
@@ -80,11 +80,11 @@ export class Uploader {
       return err('Fineuploader settings were not generated correctly.');
     }
 
-    $.when(templateMarkupPromise).then(function(markup){
-      let node = self._template.appendMarkupToContainer(markup, self.settings.container);
+    //$.when(templateMarkupPromise).then(function(markup){
+      let node = self.settings.container
       node.id = self.uploaderId;
 
-      if (self.settings.thumbnails.overrideCss) {
+      /*if (self.settings.thumbnails.overrideCss) {
         var container = getContainer($(node));
         container.css({
           height: self.settings.thumbnails.height,
@@ -94,7 +94,7 @@ export class Uploader {
 
       if (node !== false) {
         self._template.render(node, self.settings);
-      }
+      }*/
 
       self.fireAll('onTemplateRendered');
 
@@ -102,7 +102,7 @@ export class Uploader {
       self._initialize = true;
 
       self.fireAll('onUploaderInitialized');
-    });
+    //});
   }
 
   fire(type, index) {
